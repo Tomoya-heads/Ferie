@@ -1,0 +1,198 @@
+/* layout > header
+============================================================================== */
+
+$header_height_pc: 80px;
+$header_height_sp: size_sp(99);
+
+.home{
+  .common-header{
+  }
+}
+
+.common-header{
+  width: 100%;
+  height: $header_height_pc;
+  background: $black00;
+  color: $white00;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  color: $white00;
+  transition: 0.5s;
+  @include mq_sp{
+    height: $header_height_sp;
+  }
+  &.open{
+    background: $black00;
+  }
+  &.is-active{
+    background: $black00;
+    box-shadow: 0 3px 6px rgba($black00,0.1);
+  }
+  &__inner{
+    @include flex(flex, wrap, space-between, center, normal, row);
+    position: relative;
+    max-width: 1180px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    @include mq_tab{}
+    @include mq_sp{}
+  }
+  &__logo{
+    position: relative;
+    font-size: 0;
+    font-weight: 400;
+    @include mq_tab{
+    }
+    @media screen and (max-width: 900px) {
+      @include abso-center();
+    }
+    @include mq_sp{
+      width: size_sp(200);
+    }
+    a{
+      display: block;
+      position: relative;
+      width: 100%;
+      @include mq_sp{
+      }
+    }
+  }
+  &__toggle{
+    @include abso-center-v();
+    display: none;
+    width: 54px;
+    height: 45px;
+    left: 27px;
+    cursor: pointer;
+    @media screen and (max-width: 900px) {
+      display: block;
+    }
+    @include mq_sp{
+      display: block;
+      width: size_sp(54);
+      height: size_sp(45);
+      left: size_sp(27);
+    }
+    &.open{
+      span{
+        &:first-of-type{
+          top: 50%;
+          transform: translateY(-50%) rotate(-45deg);
+        }
+        &:nth-of-type(2){
+          opacity: 0;
+        }
+        &:last-of-type{
+          bottom: 50%;
+          transform: translateY(50%) rotate(45deg);
+        }
+      }
+    }
+    span{
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: $white00;
+      transition: 0.5s;
+      @media screen and (max-width: 900px) {
+        display: block;
+      }
+      @include mq_sp{
+        height: size_sp(3);
+      }
+      &:first-of-type{
+        top: 0;
+      }
+      &:nth-of-type(2){
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &:last-of-type{
+        bottom: 0;
+      }
+    }
+  }
+  &__nav{
+    @include abso-center();
+    width: auto;
+    @media screen and (max-width: 900px) {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: none;
+      width: 100%;
+      padding: 30px 0 30px;
+      background-color: rgba($black00,0.8);
+    }
+    @include mq_sp{
+      padding: size_sp(30) 0 size_sp(30);
+    }
+  }
+  &__menu{
+    @include flex(flex, nowrap, center, center, normal, row);
+    width: 100%;
+    @media screen and (max-width: 900px) {
+      display: block;
+      flex-wrap: wrap;
+    }
+    @include mq_sp{
+    }
+    li{
+      @include font-size(20);
+      letter-spacing: 0.1em;
+      margin-right: calc(40px - 0.1em);
+      @include mq_tab{
+        @include font-size(16);
+        margin-right: calc(30px - 0.1em);
+      }
+      @media screen and (max-width: 900px) {
+        @include font-size(30);
+        text-align: center;
+        line-height: 1;
+        letter-spacing: 0.15em;
+        margin-right: 0;
+      }
+      @include mq_sp{
+        @include fz_vw(30);
+      }
+      a{
+        position: relative;
+        @media screen and (max-width: 900px) {
+          display: inline-block;
+          padding: 39px 0;
+        }
+        @include mq_sp{
+          padding: size_sp(39) 0;
+        }
+        &:hover{
+          opacity: 1;
+          &:after{
+            width: 100%;
+          }
+        }
+        &:after{
+          content: "";
+          width: 0;
+          height: 2px;
+          background: $white00;
+          position: absolute;
+          left: 50%;
+          bottom: -3px;
+          transform: translateX(-50%);
+          transition: 0.3s;
+          @media screen and (max-width: 900px) {
+            content: none;
+          }
+        }
+      }
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
+  }
+}

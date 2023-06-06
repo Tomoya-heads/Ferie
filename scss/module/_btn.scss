@@ -1,0 +1,28 @@
+/* module > btn
+============================================================================ */
+
+.btn__more{
+  @include font-size(14);
+  position: relative;
+  display: block;
+  width: 261px;
+  padding: 15px 0;
+  margin: 50px auto 0;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  left: 0.05em;
+  background: $black00;
+  color: $white00;
+  text-align: center;
+  cursor: pointer;
+  @include mq_sp{
+    @include fz_vw(26);
+    width: size_sp(435);
+    padding-bottom: size_sp(40);
+    margin-top: size_sp(85);
+  }
+  &:hover{
+    opacity: 1;
+  }
+}

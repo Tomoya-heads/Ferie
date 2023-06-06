@@ -1,0 +1,148 @@
+/*  layout > footer
+============================================================================================================ */
+
+.common-footer{
+  position: relative;
+  background-color: $black00;
+  color: $white00;
+  @include mq_sp{}
+  &__pageTop{
+    @include font-size(17);
+    color: $black00;
+    line-height: (25/17);
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    position: fixed;
+    right: calc(20px - 0.05em);
+    bottom: 20px;
+    z-index: 5;
+    padding-top: 37px;
+    cursor: pointer;
+    @include mq_sp{
+      $vw_20: size_sp(20);
+      @include fz_vw(28);
+      line-height: (40/28);
+      width: size_sp(74);
+      right: calc(#{$vw_20} - 0.05em);
+      bottom: size_sp(40);
+      padding-top: size_sp(63);
+    }
+    &:before{
+      content: "";
+      width: 44px;
+      height: 37px;
+      background: url(http://placehold.jp/000000/ffffff/44x37.png?text=Top) no-repeat center/cover;
+      position: absolute;
+      top: 0;
+      left: calc(50%);
+      transform: translateX(-50%);
+      z-index: 0;
+      transition: 0.5s;
+      @include mq_sp{
+        width: size_sp(74);
+        height: size_sp(63);
+        background: url(http://placehold.jp/000000/ffffff/74x63.png?text=Top) no-repeat center/cover;
+      }
+    }
+    &.is-stop{
+      position: absolute;
+      bottom: calc(100% + 20px);
+      @include mq_sp{
+        $vw_40: size_sp(40);
+        bottom: calc(100% + #{$vw_40});
+      }
+    }
+    &:hover{
+      &:before{
+        transform: translate(-50%,-30%) rotateY(180deg);
+      }
+    }
+  }
+  &__inner{
+    max-width: 768px;
+    width: 100%;
+    padding: 36px 0 30px;
+    margin: 0 auto;
+    @include mq_sp{
+      max-width: size_sp(640);
+      padding: size_sp(83) 0 size_sp(46);
+    }
+  }
+  &__nav{
+    &Menu{
+      @include flex(flex, wrap, center, normal, normal, row);
+      line-height: 1;
+      li{
+        margin-right: calc(40px - 0.1em);
+        letter-spacing: 0.1em;
+        @include mq_sp{
+          @include fz_vw(34);
+          width: 33.32%;
+          text-align: center;
+          margin-right: 0;
+        }
+        &:nth-last-of-type(2){
+          margin-right: 0;
+          @include mq_sp{}
+        }
+        &:nth-of-type(3n){
+          @include mq_sp{
+            margin-right: 0;
+          }
+        }
+        &:nth-of-type(n + 4){
+          @include mq_sp{
+            margin-top: size_sp(70);
+          }
+        }
+        &:last-of-type{
+          @include font-size(14);
+          width: 100%;
+          text-align: center;
+          margin-top: 36px;
+          margin-right: 0;
+          @include mq_sp{
+            @include fz_vw(24);
+            margin-top: size_sp(98);
+          }
+        }
+        a{
+          position: relative;
+          &:hover{
+            opacity: 1;
+            &:after{
+              width: 100%;
+            }
+          }
+          &:after{
+            content: "";
+            width: 0;
+            height: 1px;
+            background: $white00;
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            transform: translateX(-50%);
+            transition: 0.3s;
+            @media screen and (max-width: 900px) {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__copyright{
+    @include font-size(12);
+    display: block;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: 0.095em;
+    margin-top: 30px;
+    @include mq_sp{
+      @include fz_vw(24);
+      margin-top: size_sp(54);
+    }
+  }
+}
