@@ -8,13 +8,12 @@
   <div class="common-footer__inner">
     <nav class="common-footer__nav">
       <ul class="common-footer__navMenu">
-        <li><a href="<?php echo home_url('/');?>">Top</a></li>
-        <li><a href="<?php echo home_url('/about/');?>">About</a></li>
-        <li><a href="<?php echo home_url('/service/');?>">Service</a></li>
-        <li><a href="<?php echo home_url('/members/');?>">Members</a></li>
-        <li><a href="<?php echo home_url('/company/');?>">Company</a></li>
-        <li><a href="<?php echo home_url('/contact/');?>">Contact</a></li>
-        <li><a href="<?php echo home_url('/privacy-policy/');?>">Privacy Policy</a></li>
+        <li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa1</a></li>
+        <li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa2</a></li>
+        <li><a href="<?php echo home_url( '/faq/' ); ?>">FAQ</a></li>
+        <li><a href="<?php echo home_url( '/faq/' ); ?>">利用規約</a></li>
+        <li><a href="<?php echo home_url( '/faq/' ); ?>">宿泊約款</a></li>
+        <li><a href="<?php echo home_url( '/contact/' ); ?>">Contact</a></li>
       </ul>
     </nav>
     <small class="common-footer__copyright">Copyright &copy; サイト名</small>

@@ -37,10 +37,8 @@
 
 				<nav class="common-header__nav">
 					<ul class="common-header__menu">
-						<li><a href="<?php echo home_url('/about/'); ?>">About</a></li>
-						<li><a href="<?php echo home_url('/service/');?>">Service</a></li>
-						<li><a href="<?php echo home_url('/members/'); ?>">Members</a></li>
-						<li><a href="<?php echo home_url('/company/');?>">Company</a></li>
+						<li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa1</a></li>
+						<li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa2</a></li>
 						<li><a href="<?php echo home_url( '/contact/' ); ?>">Contact</a></li>
 					</ul>
 				</nav>
