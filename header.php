@@ -19,29 +19,44 @@
 				<?php if(is_front_page()): ?>
 					<h1 class="common-header__logo">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-							<img src="http://placehold.jp/ffffff/000000/130x50.png?text=Logo" alt="<?php bloginfo('name');?>">
+							<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/logo_ferie-beside.svg" alt="<?php bloginfo('name');?>">
 						</a>
 					</h1>
 				<?php else: ?>
 					<div class="common-header__logo">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<img src="http://placehold.jp/ffffff/000000/130x50.png?text=Logo" alt="<?php bloginfo('name');?>">
+						<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/logo_ferie-beside.svg" alt="<?php bloginfo('name');?>">
 						</a>
 					</div>
 				<?php endif; ?>
-				<div class="common-header__toggle">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
 
-				<nav class="common-header__nav">
-					<ul class="common-header__menu">
-						<li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa1</a></li>
-						<li><a href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1">Villa2</a></li>
-						<li><a href="<?php echo home_url( '/contact/' ); ?>">Contact</a></li>
-					</ul>
-				</nav>
+				<div class="common-header__right">
+					<div class="common-header__toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+
+					<nav class="common-header__nav">
+						<ul class="common-header__menu">
+							<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1"><small>Ferie</small>Lodge<span> 1st</span></a></li>
+							<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa2"><small>Ferie</small>Lodge<span> 2nd</span></a></li>
+							<li><a href="<?php echo home_url( '/contact/' ); ?>">お問い合わせ</a></li>
+						</ul>
+					</nav>
+					<div class="common-header__lang">
+						<a class="#">JP</a>
+						<a class="#">EN</a>
+					</div>
+					<div class="common-header__sns">
+						<a class="#">
+								<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
+						</a>
+						<a class="#">
+							<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_facebook.svg" alt="facebook">
+						</a>
+					</div>
+				</div>
 			</div>
 		</header>
 		<!-- ////ヘッダー -->

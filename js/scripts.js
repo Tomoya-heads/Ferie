@@ -5,7 +5,7 @@ let $ = jQuery.noConflict();
 //Web font loader
 window.WebFontConfig = {
   // 以下にフォントを指定する
-  google: { families: ['Noto+Sans+JP:100,300,400,500'] },//使用するフォントと太さだけ指定
+  google: { families: ['Noto+Sans+JP:100,300,400,500','Courier+Prime'] },//使用するフォントと太さだけ指定
   //custom: { families: ['futura-pt'],urls: ['https://use.typekit.net/jxv2kur.css'] },//Adobe Fonts等
   active: function () {
     sessionStorage.fonts = true;

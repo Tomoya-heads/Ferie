@@ -5,9 +5,11 @@
 // 読み込みは非同期で行って下さい。（script.jpに記載あり）
 // =============================================================
 
-$NotoSans: 'Noto Sans JP', sans-serif;
+$NotoSans: 'Noto Sans CJK JP', sans-serif;
+$CourierPrime: 'Courier Prime', monospace;
 
 $base-font-family: $NotoSans;
+$base-font-family-en: $CourierPrime;
 $base-font-size: 16;
 $base-font-size-sp: 32;
 

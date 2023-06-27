@@ -3,7 +3,7 @@
 
 .common-footer{
   position: relative;
-  background-color: $black00;
+  background-color: $brown01;
   color: $white00;
   @include mq_sp{}
   &__pageTop{
@@ -62,52 +62,46 @@
   &__inner{
     max-width: 768px;
     width: 100%;
-    padding: 36px 0 30px;
+    padding: 44px 0 22px;
     margin: 0 auto;
     @include mq_sp{
       max-width: size_sp(640);
       padding: size_sp(83) 0 size_sp(46);
     }
   }
+  &__logo {
+    width: 111px;
+    margin: 0 auto;
+  }
+  &__sns {
+    margin-top: 30px;
+    @include flex(flex, wrap, center, center, normal, row);
+    & a {
+      line-height :1;
+      width: 26px;
+      display: block;
+      &:nth-of-type(n + 2) {
+        margin-left: 20px;
+      }
+      & img {
+        height : auto;
+      }
+    }
+  }
   &__nav{
+    margin-top: 49px;
     &Menu{
       @include flex(flex, wrap, center, normal, normal, row);
       line-height: 1;
       li{
-        margin-right: calc(40px - 0.1em);
+        font-size: 20px;
+        line-height : (22/20);
         letter-spacing: 0.1em;
-        @include mq_sp{
-          @include fz_vw(34);
-          width: 33.32%;
-          text-align: center;
-          margin-right: 0;
-        }
-        &:nth-last-of-type(2){
-          margin-right: 0;
-          @include mq_sp{}
-        }
-        &:nth-of-type(3n){
-          @include mq_sp{
-            margin-right: 0;
-          }
-        }
-        &:nth-of-type(n + 4){
-          @include mq_sp{
-            margin-top: size_sp(70);
-          }
-        }
-        &:last-of-type{
-          @include font-size(14);
-          width: 100%;
-          text-align: center;
-          margin-top: 36px;
-          margin-right: 0;
-          @include mq_sp{
-            @include fz_vw(24);
-            margin-top: size_sp(98);
-          }
-        }
+        text-align: center;
+        border-bottom: solid 1px $white00;
         a{
+          display: block;
+          padding-bottom: 10px;
           position: relative;
           &:hover{
             opacity: 1;
@@ -129,17 +123,52 @@
               content: none;
             }
           }
+          & span {
+            font-size: 16px;
+            line-height : (18/16);
+            margin-bottom: 1px;
+            display: block;
+          }
         }
       }
     }
   }
+  &__contact {
+    font-size: 16px;
+    font-weight: 500;
+    line-height : (19/16);
+    letter-spacing: .2em;
+    text-align: center;
+    width: 240px;
+    padding: 20px 0;
+    margin: 55px auto 0;
+    display: block;
+    border : solid 1px $white00;
+    border-radius: 50px;
+  }
+  &__low {
+    margin-top: 50px;
+    @include flex(flex, wrap, center, center, normal, row);
+    & > a {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: (22/18);
+      letter-spacing: .2em;
+      display: block;
+      &:nth-of-type(n + 2) {
+        margin-left: 22px;
+      }
+    }
+  }
   &__copyright{
-    @include font-size(12);
+    @include font-size(14);
+    font-weight: 500;
+    line-height: (17/14);
     display: block;
     text-align: center;
     line-height: 1;
-    letter-spacing: 0.095em;
-    margin-top: 30px;
+    letter-spacing: 0.1em;
+    margin-top: 71px;
     @include mq_sp{
       @include fz_vw(24);
       margin-top: size_sp(54);
