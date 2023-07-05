@@ -162,15 +162,35 @@ $(function(){
 });
 
 // 追従タイトル
-// $('.top-inn').each(function() {
-//   var parentHeight = $(this).find('.top-inn__low').outerHeight();
-//   var childHeight = $(this).find('.top-inn__low-fixed').outerHeight();
-//   var childTop = parentHeight - childHeight;
-//   $(this).find('.top-inn__low-fixed').css({
-//     'position': 'fixed',
-//     'top': childTop + 'px'
-//   });
-// });
+$('.top-inn').each(function() {
+  var lowSec = $(this).find(".top-inn__low")
+  var lowFixed = $(this).find(".top-inn__low-fixed")
+  $(window).scroll(function() {
+    var headerHeight = $('.common-header').outerHeight();
+    var scrollTop = $(window).scrollTop(); // スクロール上部の位置
+    let lowTop = lowSec.offset().top; // 対象エリアの上部の位置
+    let lowBottom = lowTop + lowSec.outerHeight(); // 対象エリアの下部の位置
+    if (scrollTop < lowTop - headerHeight) {
+      lowFixed.css({
+        'position': 'absolute',
+        'top': '0',
+        'bottom': 'auto',
+      });
+    } else if (scrollTop >= lowTop - headerHeight   && scrollTop <= lowBottom - headerHeight * 4) {
+      lowFixed.css({
+        'position': 'fixed',
+        'top': headerHeight,
+        'bottom': 'auto',
+      });
+    } else {
+      lowFixed.css({
+        'position': 'absolute',
+        'top': 'auto',
+        'bottom': headerHeight,
+      });
+    }
+  });
+});
 
 $('.top-inn').each(function() {
   let scrollTop = $(window).scrollTop(); // スクロール上部の位置
@@ -205,11 +225,18 @@ $(window).on('scroll', function() {
   });
 });
 $('.top-inn__facility-right-inner').each(function(){
-  if(window.matchMedia('(max-width: 1024px)').matches){
+  if(window.matchMedia('(min-width: 1025px)').matches){
     var rightParent = $(this).parent('.top-inn__facility-right');
     var rightInnerHeight = $(this).outerHeight(true);
     rightParent.css('height', rightInnerHeight);
   }
+});
+
+$(function(){
+  var arw_prev = $('.top-inn__facility-right .slick-prev');
+  var arw_next = $('.top-inn__facility-right .slick-next');
+  arw_prev.text('PREV');
+  arw_next.text('NEXT');
 });
 
 // スライド枚数

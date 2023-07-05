@@ -491,10 +491,37 @@
       -webkit-text-orientation: sideways;
       text-orientation: sideways;
       color : $brown02;
-      left : 20px;
+      padding-top: 70px;
+      left : 12px;
+      @include mq_sp{
+        @include fz_vw(26);
+        padding-top: size_sp(70);
+        left: size_sp(2);
+      }
       & > small {
         font-size: 12px;
         line-height: (11/12);
+        display: block;
+        @include mq_sp{
+          @include fz_vw(20);
+          display: inline-block;
+          margin-bottom: size_sp(-6);
+        }
+      }
+      &:before {
+        content: "";
+        width: 1px;
+        height: 60px;
+        background-color: $brown02;
+        position : absolute;
+        top : 0;
+        left : 50%;
+        transform: translateX(-50%);
+        z-index : 10;
+        @include mq_sp{
+          width: size_sp(2);
+          height: size_sp(50);
+        }
       }
     }
   }
