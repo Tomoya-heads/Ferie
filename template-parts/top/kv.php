@@ -20,9 +20,12 @@
       </div>
     </div>
     <div class="<?php echo $secName;?>__scroll">
+      scroll
       <div class="<?php echo $secName;?>__scroll-circle">
         <div id="counter">0%</div>
-        <div id="circle"></div>
+        <div class="circle" id="circle01"></div>
+        <div class="circle" id="circle02"></div>
+        <div class="circle" id="circle03"></div>
       </div>
     </div>
   </div>

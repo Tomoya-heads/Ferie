@@ -3,13 +3,31 @@ window.addEventListener('beforeunload', function(e){
 });
 
 $(function(){
-  var bar = new ProgressBar.Circle(circle, {
-    strokeWidth: 7,
+  var bar01 = new ProgressBar.Circle(circle01, {
+    strokeWidth: 8,
     easing: 'linear',
     duration: 0,
     color: '#2A8E40',
     trailColor: '#FFF',
-    trailWidth: 6,
+    trailWidth: 8,
+    svgStyle: null
+  });
+  var bar02 = new ProgressBar.Circle(circle02, {
+    strokeWidth: 8,
+    easing: 'linear',
+    duration: 0,
+    color: '#2A8E40',
+    trailColor: '#FFF',
+    trailWidth: 7,
+    svgStyle: null
+  });
+  var bar03 = new ProgressBar.Circle(circle03, {
+    strokeWidth: 8,
+    easing: 'linear',
+    duration: 0,
+    color: '#2A8E40',
+    trailColor: '#FFF',
+    trailWidth: 7,
     svgStyle: null
   });
   $(window).on('scroll', function() {
@@ -18,32 +36,44 @@ $(function(){
     var scrollTop = $(window).scrollTop(); // スクロール位置
     var scrollPercentage = (scrollTop / windowHeight) * 100; // スクロール位置の割合
     var circlePercentage = scrollPercentage / 100; // スクロール位置の割合
+    var circlePercentage02 = (scrollPercentage / 100)- 1; // スクロール位置の割合
+    var circlePercentage03 = (scrollPercentage / 100)- 2; // スクロール位置の割合
     var count = Math.floor(scrollPercentage); // 3つずつカウントアップ
     if (scrollTop === 0) {
       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
     }
     if (scrollTop >= windowHeight * 3) {
+      bar03.animate(1.0);
       $('#counter').text('100' + "%"); // カウントを表示するなど、必要な処理を行う
     } else if (scrollTop >= windowHeight * 2) {
+      $('#circle02').addClass('hidden');
       $('#counter').text(count - 199 + "%"); // カウントを表示するなど、必要な処理を行う
     } else if (scrollTop >= windowHeight) {
+      $('#circle01').addClass('hidden');
+      $('#circle02').removeClass('hidden');
       $('#counter').text(count - 99 + "%"); // カウントを表示するなど、必要な処理を行う
     } else  if (scrollTop === 0) {
+      $('#circle01').removeClass('hidden');
+        bar01.animate(circlePercentage);
       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
     } else {
       $('#counter').text(count + 1 + "%"); // カウントを表示するなど、必要な処理を行う
     }
-    if (scrollTop >= windowHeight * 3) {
-      bar.animate(1.0);
-    } else if (scrollTop >= windowHeight * 2) {
-      bar.animate(circlePercentage);
-    } else if (scrollTop >= windowHeight) {
-      bar.animate(circlePercentage);
-    } else if (scrollTop === 0) {
-      bar.animate(0);
-    } else {
-      bar.animate(circlePercentage);
-    }
+    // if (scrollTop >= windowHeight * 3) {
+    //   bar01.animate(1.0);
+    // } else if (scrollTop >= windowHeight * 2) {
+    //   bar01.animate(circlePercentage);
+    // } else if (scrollTop >= windowHeight) {
+    //   bar01.animate(circlePercentage);
+    // } else if (scrollTop === 0) {
+    //   bar01.animate(0);
+    // } else {
+        bar01.animate(circlePercentage);
+        bar02.animate(circlePercentage02);
+      if (circlePercentage03 <= 1.0) {
+        bar03.animate(circlePercentage03);
+      }
+    // }
     // 円
     // bar.animate(circlePercentage);
   });
@@ -175,9 +205,11 @@ $(window).on('scroll', function() {
   });
 });
 $('.top-inn__facility-right-inner').each(function(){
-  var rightParent = $(this).parent('.top-inn__facility-right');
-  var rightInnerHeight = $(this).outerHeight(true);
-  rightParent.css('height', rightInnerHeight);
+  if(window.matchMedia('(max-width: 1024px)').matches){
+    var rightParent = $(this).parent('.top-inn__facility-right');
+    var rightInnerHeight = $(this).outerHeight(true);
+    rightParent.css('height', rightInnerHeight);
+  }
 });
 
 // スライド枚数
