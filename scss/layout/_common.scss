@@ -1,16 +1,17 @@
 /* layout > common
 ============================================================================================================ */
 
-$header_height_pc: 80px;
-$header_height_sp: size_sp(99);
+$header_height_pc: 82px;
+$header_height_sp: size_sp(115);
 
 //Basic 基本
 .common-main{
   width: 100%;
   height: 100%;
   margin-top: $header_height_pc;//ヘッダーの高さを入れる
-  padding-bottom: 100px;
+  padding-bottom: 200px;
 	@include mq_tab {
+    margin-top: 115px;
 	}
 	@include mq_pad {
 	}
@@ -22,7 +23,18 @@ $header_height_sp: size_sp(99);
 
 //TOP トップページ
 .home .common-main{
+  margin-top: 0;
 	@include mq_sp {
+	}
+}
+
+//TOP トップページ
+.faq .common-main{
+  @include mq_tab{
+    
+  }
+	@include mq_sp {
+    padding-bottom: size_sp(250);
 	}
 }
 

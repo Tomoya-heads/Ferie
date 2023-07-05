@@ -1,0 +1,102 @@
+.top-using {
+  padding-top: 103px;
+  @include mq_sp{
+    padding-top: size_sp(80);
+  }
+  &__list {
+    padding-top: 55px;
+    @include flex(flex, wrap, center, stretch, normal, row);
+    @include mq_tab{
+      flex-direction : column;
+    }
+    @include mq_sp{
+      padding-top: size_sp(69);
+      flex-direction: column;
+    }
+    & > li {
+      width: 200px;
+      opacity: 0;
+      transition-duration: .6s;
+      @include mq_tab{
+        width: 680px;
+        margin: 0 auto;
+        @include flex(flex, wrap, flex-start, center, normal, row);
+      }
+      @include mq_sp{
+        width: size_sp(648);
+        margin: 0 auto;
+      }
+      &:nth-of-type(n + 2) {
+        margin-left: 40px;
+        @include mq_tab{
+          margin : 98px auto 0;
+        }
+        @include mq_sp{
+          margin : size_sp(98) auto 0;
+        }
+      }
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+  &__img {
+    width: 180px;
+    margin: 0 auto;
+    @include mq_sp{
+      width: size_sp(180);
+      margin-left: 0;
+      margin-right: size_sp(32);
+    }
+  }
+  &__group {
+    @include mq_tab{
+      margin-right: 40px;
+    }
+    @include mq_sp{
+      margin-right: size_sp(36);
+    }
+  }
+  &__step {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: (27/24);
+    letter-spacing: .2em;
+    text-align: center;
+    margin-top: 59px;
+    @include mq_sp{
+      @include fz_vw(24);
+      margin-top: size_sp(16);
+    }
+  }
+  &__ttl {
+    font-size: 28px;
+    line-height: (41/28);
+    letter-spacing: .2em;
+    text-align: center;
+    margin-top: 13px;
+    @include mq_tab{
+      width: 160px;
+    }
+    @include mq_sp{
+      @include fz_vw(28);
+      width: auto;
+      margin-top: size_sp(12);
+    }
+  }
+  &__txt {
+    font-size: 16px;
+    line-height: (24/16);
+    letter-spacing: .1em;
+    margin-top: 30px;
+    @include mq_tab{
+      width: 250px;
+    }
+    @include mq_sp{
+      @include fz_vw(22);
+      line-height: 1.23;
+      letter-spacing: .2em;
+      width: size_sp(264);
+    }
+  }
+}

@@ -23,13 +23,13 @@ if( function_exists('acf_add_options_page') ) {
     'capability' => 'read',
     'redirect' => true
   ));
-  // acf_add_options_page(array(
-  //   'page_title' => 'ページタイトル2',
-  //   'menu_title' => 'メニュータイトル2',
-  //   'menu_slug' => 'acf-custom-options2',
-  //   'capability' => 'read',
-  //   'redirect' => true
-  // ));
+  acf_add_options_page(array(
+    'page_title' => '周辺施設',
+    'menu_title' => '周辺施設',
+    'menu_slug' => 'acf-custom-options2',
+    'capability' => 'read',
+    'redirect' => true
+  ));
 }
 
 //----------------------------------------------------------

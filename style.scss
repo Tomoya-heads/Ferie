@@ -53,6 +53,7 @@ License: GNU General Public License v2 or later
 @import "scss/layout/_single.scss";
 @import "scss/layout/_container.scss";
 @import "scss/layout/_keyvisual.scss";
+@import "scss/layout/_faq.scss";
 @import "scss/layout/_contact.scss";
 @import "scss/layout/_privacy.scss";
 @import "scss/layout/_404.scss";
@@ -66,3 +67,14 @@ License: GNU General Public License v2 or later
 @import "scss/module/_breadcrumbs.scss";
 @import "scss/module/_pagenavi.scss";
 @import "scss/module/_scroll.scss";
+@import "scss/module/_ttl.scss";
+
+/* module
+============================================================================ */
+
+@import "scss/module/top/_kv.scss";
+@import "scss/module/top/_inn.scss";
+@import "scss/module/top/_using.scss";
+@import "scss/module/top/_around.scss";
+@import "scss/module/top/_map.scss";
+@import "scss/module/top/_access.scss";

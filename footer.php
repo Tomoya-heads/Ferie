@@ -1,10 +1,26 @@
 
 </main>
 <!-- ////コンテンツ -->
-
 <!-- フッター -->
 <footer class="common-footer" id="Footer">
-  <span class="common-footer__pageTop" style="display:none">TOP</span>
+  <!-- 予約ボタン -->
+  <div class="fixed-btn">
+  <div class="fixed-btn__inner">
+  <div class="fixed-btn__txt">予約は<br>こちら</div>
+  <?php if(have_rows('acf_inn_group','option')):?>
+  <div class="fixed-btn__list">
+    <?php
+      while(have_rows('acf_inn_group','option')): the_row();
+      $lodge_name = get_sub_field('acf_inn_name');
+      $lodge_link = get_sub_field('acf_inn_link');
+    ?>
+    <a class="font-en" href="#" target="_blank"><?php echo $lodge_name;?></a>
+    <?php endwhile;?>
+  </div>
+  <?php endif;?>
+  </div>
+</div>
+<!-- ここまで -->
   <div class="common-footer__inner">
     <div class="common-footer__logo">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>">

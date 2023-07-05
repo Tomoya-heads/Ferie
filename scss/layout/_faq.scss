@@ -1,0 +1,273 @@
+.page-faq {
+  &__nav {
+    background-color: $brown05;
+    width: 100%;
+    padding: 14px 0;
+    position: fixed;
+    top :82px;
+    left :0;
+    z-index: 99;
+    @include mq_tab{
+      top : 115px;
+    }
+    @include mq_sp{
+      top : size_sp(115);
+      padding: size_sp(10) 0;
+      overflow: hidden;
+    }
+    &-list {
+      @include flex(flex, wrap, center, center, normal, row);
+      @include mq_sp{
+        padding-left: size_sp(30);
+        margin: 0 auto;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow: scroll;
+      }
+      & > a {
+        font-size: 16px;
+        line-height: (24/16);
+        letter-spacing: .2em;
+        color : $brown04;
+        background-color: rgba($white00, .6);
+        padding: 3px 17px;
+        display: block;
+        border : solid 1px $brown04;
+        border-radius: 40px;
+        white-space: nowrap;
+        @include mq_sp{
+          @include fz_vw(20);
+          line-height: (30/20);
+          letter-spacing: .14em;
+          padding: size_sp(5) size_sp(18) size_sp(4);
+          border : solid size_sp(1) $brown04;
+          border-radius: size_sp(40);
+        }
+        &:nth-of-type(n + 2) {
+          margin-left: 30px;
+          @include mq_sp{
+            margin-left: size_sp(20);
+          }
+        }
+        &:last-of-type {
+          @include mq_sp{
+            margin-right: size_sp(30);
+          }
+        }
+      }
+    }
+  }
+  &__main {
+    padding: 160px 0;
+    background-color: $green02;
+    padding : size_sp(151) 0 size_sp(200);
+  }
+  &__list {
+    margin-top: 80px;
+    & > li {
+      &:nth-of-type(n + 2) {
+        margin-top: 100px;
+        @include mq_sp{
+          margin-top: size_sp(100);
+        }
+      }
+    }
+  }
+  &__ttl {
+    font-size: 28px;
+    line-height: (41/28);
+    letter-spacing: .05em;
+    width: 700px;
+    padding: 0 42px 10px;
+    margin : 0 auto;
+    border-bottom: solid 1px $brown04;
+    @include mq_sp{
+      @include fz_vw(32);
+      line-height: (47/32);
+      width: size_sp(700);
+      padding: 0 size_sp(30) size_sp(9);
+    }
+  }
+  &__detail {
+    width: 680px;
+    padding-top: 49px;
+    padding-right: 30px;
+    margin: 0 auto;
+    @include mq_sp{
+      width: size_sp(650);
+      padding-top: size_sp(49);
+      padding-right: 0;
+    }
+    & > li {
+      &:nth-of-type(n + 2) {
+        margin-top: 50px;
+        @include mq_sp{
+          margin-top: size_sp(70);
+        }
+      }
+      &.active {
+        & .page-faq {
+          &__circle {
+            &:before {
+              transform: rotate(180deg) translate(50%, 60%);
+            }
+          }
+        }
+      }
+    }
+  }
+  &__question {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: (28/16);
+    letter-spacing: .04em;
+    color : $white00;
+    background-color: $brown04;
+    padding: 16px 65px 14px;
+    @include flex(flex, wrap, flex-start, center, normal, row);
+    border-radius : 30px 0px 0px 30px;
+    position: relative;
+    cursor: pointer;
+    @include mq_sp{
+      @include fz_vw(24);
+      line-height: (28/24);
+      padding: size_sp(18) size_sp(70);
+      border-radius : size_sp(30) 0px 0px size_sp(30);
+    }
+    & > span {
+      width: 30px;
+      position : absolute;
+      top : 13px;
+      left: 23px;
+      @include mq_sp{
+        width: size_sp(33);
+        top: size_sp(17);
+        left: size_sp(18);
+      }
+    }
+  }
+  &__circle {
+    width: 30px;
+    height: 30px;
+    background-color: $white00;
+    border-radius: 50%;
+    position : absolute;
+    top : 14px;
+    right : 14px;
+    @include mq_sp{
+      width: size_sp(30);
+      height: size_sp(30);
+      top: size_sp(14);
+      right: size_sp(14);
+    }
+    &:before {
+      content : "";
+      width: 20px;
+      height: 10px;
+      background-image: url(./img/page/faq/icn_dogleg.svg);
+      position : absolute;
+      top : 50%;
+      left : 50%;
+      transform: translate(-50%, -30%);
+      transition: .6s;
+      @include mq_sp{
+        width: size_sp(20);
+        height: size_sp(10);
+        background-image: url(./img/page/faq/icn_dogleg-sp.svg);
+      }
+    }
+  }
+  &__answer {
+    font-size: 16px;
+    line-height: (28/16);
+    background-color: $white00;
+    width: 610px;
+    padding: 21px 40px 19px;
+    margin-left: auto;
+    display: none;
+    @include mq_sp{
+      @include fz_vw(24);
+      line-height: (38/24);
+      width: size_sp(590);
+      padding: size_sp(30) size_sp(30) size_sp(40);
+    }
+  }
+  &__sub {
+    padding-top: 50px;
+    @include mq_sp{
+      padding-top: size_sp(151);
+    }
+    &-list {
+      & > li {
+        width: 700px;
+        margin: 0 auto;
+        @include mq_sp{
+          width: size_sp(700);
+        }
+        &:nth-of-type(n + 2) {
+          padding-top: 150px;
+          @include mq_sp{
+            padding-top: size_sp(201);
+          }
+        }
+        &:nth-of-type(2) {
+          & .mod-ttl {
+            margin-bottom: 84px;
+            @include mq_sp{
+              margin-bottom: size_sp(90);
+            }
+          }
+          & .page-faq {
+            &__term {
+              padding-top: 102px;
+              @include mq_sp{
+                padding-top: size_sp(118);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__term {
+    color : $gray01;
+    padding-top: 84px;
+    @include mq_sp{
+      padding-top: size_sp(89);
+    }
+    & > li {
+      &:nth-of-type(n + 2) {
+        margin-top: 99px;
+        @include mq_sp{
+          margin-top: size_sp(100);
+        }
+      }
+    }
+    &-ttl {
+      font-size: 28px;
+      line-height: (41/28);
+      letter-spacing: .05em;
+      padding: 0 42px 10px;
+      margin-bottom: 30px;
+      border-bottom: solid 1px $brown04;
+      @include mq_sp{
+        @include fz_vw(32);
+        line-height: (47/32);
+        padding: 0 size_sp(4) size_sp(13);
+        margin-bottom: size_sp(29);
+        border-bottom: solid size_sp(2) $brown04;
+      }
+    }
+    &-txt {
+      font-size: 16px;
+      line-height: (28/16);
+      width: 616px;
+      margin: 0 auto;
+      @include mq_sp{
+        @include fz_vw(24);
+        line-height: (38/24);
+        width: size_sp(610);
+      }
+    }
+  }
+}

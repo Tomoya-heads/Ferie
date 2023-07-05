@@ -6,82 +6,41 @@
   background-color: $brown01;
   color: $white00;
   @include mq_sp{}
-  &__pageTop{
-    @include font-size(17);
-    color: $black00;
-    line-height: (25/17);
-    text-align: center;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    position: fixed;
-    right: calc(20px - 0.05em);
-    bottom: 20px;
-    z-index: 5;
-    padding-top: 37px;
-    cursor: pointer;
-    @include mq_sp{
-      $vw_20: size_sp(20);
-      @include fz_vw(28);
-      line-height: (40/28);
-      width: size_sp(74);
-      right: calc(#{$vw_20} - 0.05em);
-      bottom: size_sp(40);
-      padding-top: size_sp(63);
-    }
-    &:before{
-      content: "";
-      width: 44px;
-      height: 37px;
-      background: url(http://placehold.jp/000000/ffffff/44x37.png?text=Top) no-repeat center/cover;
-      position: absolute;
-      top: 0;
-      left: calc(50%);
-      transform: translateX(-50%);
-      z-index: 0;
-      transition: 0.5s;
-      @include mq_sp{
-        width: size_sp(74);
-        height: size_sp(63);
-        background: url(http://placehold.jp/000000/ffffff/74x63.png?text=Top) no-repeat center/cover;
-      }
-    }
-    &.is-stop{
-      position: absolute;
-      bottom: calc(100% + 20px);
-      @include mq_sp{
-        $vw_40: size_sp(40);
-        bottom: calc(100% + #{$vw_40});
-      }
-    }
-    &:hover{
-      &:before{
-        transform: translate(-50%,-30%) rotateY(180deg);
-      }
-    }
-  }
   &__inner{
     max-width: 768px;
     width: 100%;
     padding: 44px 0 22px;
     margin: 0 auto;
     @include mq_sp{
-      max-width: size_sp(640);
-      padding: size_sp(83) 0 size_sp(46);
+      max-width: size_sp(390);
+      padding: size_sp(82) 0 size_sp(30);
     }
   }
   &__logo {
     width: 111px;
     margin: 0 auto;
+    @include mq_sp{
+      width: size_sp(111);
+    }
   }
   &__sns {
     margin-top: 30px;
     @include flex(flex, wrap, center, center, normal, row);
+    @include mq_sp{
+      margin-top: size_sp(50);
+    }
     & a {
       line-height :1;
       width: 26px;
       display: block;
+      @include mq_sp{
+        width: size_sp(60);
+      }
       &:nth-of-type(n + 2) {
         margin-left: 20px;
+        @include mq_sp{
+          margin-left: size_sp(50);
+        }
       }
       & img {
         height : auto;
@@ -90,6 +49,9 @@
   }
   &__nav{
     margin-top: 49px;
+    @include mq_sp{
+      margin-top: size_sp(45);
+    }
     &Menu{
       @include flex(flex, wrap, center, normal, normal, row);
       line-height: 1;
@@ -99,10 +61,18 @@
         letter-spacing: 0.1em;
         text-align: center;
         border-bottom: solid 1px $white00;
+        @include mq_sp{
+          @include fz_vw(24);
+          line-height: 1;
+          border-bottom: solid size_sp(1) $white00;
+        }
         a{
           display: block;
           padding-bottom: 10px;
           position: relative;
+          @include mq_sp{
+            padding-bottom: size_sp(10);
+          }
           &:hover{
             opacity: 1;
             &:after{
@@ -128,6 +98,11 @@
             line-height : (18/16);
             margin-bottom: 1px;
             display: block;
+            @include mq_sp{
+              @include fz_vw(20);
+              line-height: 1;
+              margin-bottom: size_sp(3);
+            }
           }
         }
       }
@@ -145,18 +120,36 @@
     display: block;
     border : solid 1px $white00;
     border-radius: 50px;
+    @include mq_sp{
+      @include fz_vw(24);
+      line-height: (29/24);
+      width: size_sp(390);
+      padding: size_sp(14) 0 size_sp(16);
+      margin-top: size_sp(69);
+      border : solid size_sp(1) $white00;
+    }
   }
   &__low {
     margin-top: 50px;
     @include flex(flex, wrap, center, center, normal, row);
+    @include mq_sp{
+      margin-top: size_sp(79);
+    }
     & > a {
       font-size: 18px;
       font-weight: 500;
       line-height: (22/18);
       letter-spacing: .2em;
       display: block;
+      @include mq_sp{
+        @include fz_vw(22);
+        line-height: (27/22);
+      }
       &:nth-of-type(n + 2) {
         margin-left: 22px;
+        @include mq_sp{
+          margin-left: size_sp(40);
+        }
       }
     }
   }
@@ -170,8 +163,11 @@
     letter-spacing: 0.1em;
     margin-top: 71px;
     @include mq_sp{
-      @include fz_vw(24);
+      @include fz_vw(22);
+      line-height: (27/22);
       margin-top: size_sp(54);
+      letter-spacing: .2em;
+      margin-top: size_sp(50);
     }
   }
 }

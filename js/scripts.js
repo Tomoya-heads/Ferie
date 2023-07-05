@@ -34,13 +34,17 @@ objectFitImages('img.object_fit');
 //ヘッダーメニュー
 $(function(){
   let header_toggle = $(".common-header__toggle");
-  let header_nav = $(".common-header__nav");
+  let header_nav = $(".common-header__right");
   function checkMediaQuery(){
-    if(window.matchMedia('(max-width: 768px)').matches){
+    if(window.matchMedia('(max-width: 1024px)').matches){
       //header_nav.hide();
       header_toggle.on("click",function(){
         $(this).toggleClass("open");
         header_nav.fadeToggle();
+      })
+      $('.common-header__menu > li > a').on("click",function(){
+        $(header_toggle).removeClass("open");
+        header_nav.fadeOut();
       })
     }else{
       //header_nav.show();
@@ -56,41 +60,32 @@ $(function(){
   });
 });
 
-//ページトップに戻る
+//追従予約ボタン
 $(function(){
-  let page_top = $(".common-footer__pageTop");
-  let window_height = $(window).height();
+  let fixed_btn = $(".fixed-btn");
   $(window).on("scroll",function(){
     let scroll = $(window).scrollTop() + $(window).height();
     let footer = $("footer").offset().top;
-    let scroll_top = $(window).scrollTop();
-    if(scroll_top > window_height){
-      page_top.fadeIn();
-    }else{
-      page_top.fadeOut();
-    }
     if (scroll >= footer) {
-      page_top.css({
+      fixed_btn.css({
         "position": "absolute",
       }).addClass("is-stop");
     } else {
-      page_top.css({
+      fixed_btn.css({
         "position": "fixed",
       }).removeClass("is-stop");
     }
-  });
-  page_top.click(function () {
-    $('body, html').animate({ scrollTop: 0 }, 500);
-    return false;
   });
 });
 
 //スムーズスクロール
 $(function () {
+  var windowWidth = $(window).width();
+  var headerHight = $('.common-header').outerHeight();
   $('a[href^="#"]').click(function () {
     var href = $(this).attr("href");
     var target = $(href == "#" || href == "" ? "body" : href);
-    var position = target.offset().top;
+    var position = target.offset().top - headerHight;
     $("html, body").animate({ scrollTop: position }, 700, "swing");
     return false;
   });

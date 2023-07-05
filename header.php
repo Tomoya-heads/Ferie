@@ -7,6 +7,17 @@
 	<meta name="format-detection" content="telephone=no">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
+	<script>
+		(function(d) {
+			var config = {
+				kitId: 'hhr2qwu',
+				scriptTimeout: 3000,
+				async: true
+			},
+			h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+		})(document);
+	</script>
+
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -29,32 +40,33 @@
 						</a>
 					</div>
 				<?php endif; ?>
+				<div class="common-header__toggle">
+					<span></span>
+					<span>MENU</span>
+					<span></span>
+				</div>
 
 				<div class="common-header__right">
-					<div class="common-header__toggle">
-						<span></span>
-						<span></span>
-						<span></span>
-					</div>
-
-					<nav class="common-header__nav">
-						<ul class="common-header__menu">
-							<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1"><small>Ferie</small>Lodge<span> 1st</span></a></li>
-							<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa2"><small>Ferie</small>Lodge<span> 2nd</span></a></li>
-							<li><a href="<?php echo home_url( '/contact/' ); ?>">お問い合わせ</a></li>
-						</ul>
-					</nav>
-					<div class="common-header__lang">
-						<a class="#">JP</a>
-						<a class="#">EN</a>
-					</div>
-					<div class="common-header__sns">
-						<a class="#">
-								<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
-						</a>
-						<a class="#">
-							<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_facebook.svg" alt="facebook">
-						</a>
+					<div class="common-header__right-inner">
+						<nav class="common-header__nav">
+							<ul class="common-header__menu">
+								<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#ferielodge1st"><small>Ferie</small>Lodge<span> 1st</span></a></li>
+								<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#ferielodge2nd"><small>Ferie</small>Lodge<span> 2nd</span></a></li>
+								<li><a href="<?php echo home_url( '/contact/' ); ?>">お問い合わせ</a></li>
+							</ul>
+						</nav>
+						<div class="common-header__lang">
+							<a class="#">JP</a>
+							<a class="#">EN</a>
+						</div>
+						<div class="common-header__sns">
+							<a class="#">
+									<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
+							</a>
+							<a class="#">
+								<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_facebook.svg" alt="facebook">
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

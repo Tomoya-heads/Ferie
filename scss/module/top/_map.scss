@@ -1,0 +1,23 @@
+.top-map {
+  padding-top: 149px;
+  @include mq_sp{
+    padding-top: size_sp(150);
+  }
+  &__img {
+    width: 1092px;
+    height: 595px;
+    background: gray;
+    margin: 55px auto 0;
+    border-radius: 20px;
+    @include mq_tab{
+      width: 680px;
+      height : 420px;
+    }
+    @include mq_sp{
+      width: size_sp(626);
+      height: size_sp(409);
+      border-radius:size_sp(20);
+      margin-top: size_sp(55);
+    }
+  }
+}

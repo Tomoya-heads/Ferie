@@ -40,15 +40,38 @@ function ferie_widgets_init()
 }
 add_action('widgets_init', 'ferie_widgets_init');
 
+function add_file_types_to_uploads($file_types){
+
+	$new_filetypes = array();
+	$new_filetypes['svg'] = 'image/svg+xml';
+	$file_types = array_merge($file_types, $new_filetypes );
+
+	return $file_types;
+}
+add_action('upload_mimes', 'add_file_types_to_uploads');
+
 function ferie_scripts()
 {
   wp_enqueue_style('ferie-sanitize', get_template_directory_uri().'/css/sanitize.css');
 	wp_enqueue_style('ferie-style', get_stylesheet_uri(),array(), filemtime( get_stylesheet_directory() . '/style.css' ));
+	if(is_front_page() || is_home() || is_page('quasi-drug')) {
+		wp_enqueue_style('slick-style','https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css','','','');
+		wp_enqueue_style('slick-theme','https://cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick-theme.min.css','','','');
+	}
 
 	wp_deregister_script('jquery');
 	wp_enqueue_script('jquery','https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js','','',true);
 	wp_enqueue_script('ofi',get_template_directory_uri().'/js/ofi.min.js','','',true);
 	wp_enqueue_script('ferie-scripts', get_template_directory_uri().'/js/scripts.js', '',filemtime( get_stylesheet_directory() . '/js/scripts.js' ),true);
+	if(is_front_page() || is_home()) {
+		wp_enqueue_script('progressbar01','https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.js','','',true);
+		wp_enqueue_script('progressbar02','https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js','','',true);
+		wp_enqueue_script('slick-js','https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js','','',true);
+		wp_enqueue_script('top-scripts', get_template_directory_uri().'/js/top.js', '','',true);
+	}
+	if(is_page('faq')) {
+		wp_enqueue_script('faq-scripts', get_template_directory_uri().'/js/faq.js', '','',true);
+	}
 }
 add_action('wp_enqueue_scripts', 'ferie_scripts');
 

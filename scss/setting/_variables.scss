@@ -6,14 +6,16 @@
 // =============================================================
 
 $NotoSans: 'Noto Sans CJK JP', sans-serif;
+$TenMincho: "ten-mincho", serif;
 $CourierPrime: 'Courier Prime', monospace;
 
 $base-font-family: $NotoSans;
+$base-font-family-ja: $TenMincho;
 $base-font-family-en: $CourierPrime;
 $base-font-size: 16;
 $base-font-size-sp: 32;
 
-$base-font-color: $black00;
+$base-font-color: $brown04;
 $base-font-weight: 300;
 $base-line-height: (33/16);
 $base-line-height-sp: (66/32);

@@ -1,0 +1,34 @@
+.mod-ttl {
+  font-size: 38px;
+  font-weight: 300;
+  font-family: $base-font-family-ja;
+  line-height: (56/38);
+  letter-spacing: .2em;
+  text-align: center;
+  position: relative;
+  @include mq_sp{
+    @include fz_vw(44);
+    line-height: (65/44);
+  }
+  &:before {
+    content : "";
+    width: 70px;
+    height: 1px;
+    background-color: $brown04;
+    position : absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    @include mq_sp{
+      width: size_sp(70);
+      height: size_sp(1);
+      bottom: size_sp(-9);
+    }
+  }
+  &.w {
+    color : $white00;
+    &:before {
+      background-color: #fff;
+    }
+  }
+}

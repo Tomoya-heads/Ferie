@@ -2,11 +2,12 @@
 ============================================================================== */
 
 $header_height_pc: 82px;
-$header_height_sp: size_sp(99);
+$header_height_sp: size_sp(115);
 
 .home{
-  .common-header{
-  }
+  // .common-header{
+  //   background : transparent;
+  // }
 }
 
 .common-header{
@@ -21,8 +22,13 @@ $header_height_sp: size_sp(99);
   z-index: 100;
   color: $white00;
   transition: 0.5s;
+  z-index : 200;
+  @include mq_tab{
+    height: 115px;
+  }
   @include mq_sp{
     height: $header_height_sp;
+    padding: 0px size_sp(27) 0 size_sp(30);
   }
   &.open{
     background: $black00;
@@ -32,7 +38,7 @@ $header_height_sp: size_sp(99);
     box-shadow: 0 3px 6px rgba($black00,0.1);
   }
   &__inner{
-    @include flex(flex, wrap, space-between, stretch, normal, row);
+    @include flex(flex, wrap, space-between, center, normal, row);
     position: relative;
     width: 100%;
     height: 100%;
@@ -45,14 +51,15 @@ $header_height_sp: size_sp(99);
     font-size: 0;
     font-weight: 400;
     width: 124px;
-    margin-top: 18px;
+    margin-top: -5px;
+    z-index : 100;
     @include mq_tab{
-    }
-    @media screen and (max-width: 900px) {
-      @include abso-center();
+      width: 208px;
+      margin-top: -12px;
     }
     @include mq_sp{
-      width: size_sp(200);
+      width: size_sp(208);
+      margin-top: size_sp(-12);
     }
     a{
       display: block;
@@ -63,125 +70,205 @@ $header_height_sp: size_sp(99);
     }
   }
   &__toggle{
-    @include abso-center-v();
     display: none;
-    width: 54px;
-    height: 45px;
-    left: 27px;
-    cursor: pointer;
-    @media screen and (max-width: 900px) {
+    @include mq_tab{
+      width: 66px;
+      height: 63px;
       display: block;
+      position: absolute;
+      top : 50%;
+      right : 0;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 100;
     }
     @include mq_sp{
       display: block;
-      width: size_sp(54);
-      height: size_sp(45);
-      left: size_sp(27);
+      width: size_sp(66);
+      height: size_sp(63);
     }
     &.open{
       span{
         &:first-of-type{
-          top: 50%;
-          transform: translateY(-50%) rotate(-45deg);
+          @include mq_tab{
+            top: 50%;
+            left: 10px;
+            transform: translateY(-130%) rotate(-45deg);
+          }
+          @include mq_sp{
+            left : size_sp(10);
+          }
         }
         &:nth-of-type(2){
-          opacity: 0;
+          @include mq_tab{
+            opacity: 0;
+          }
         }
         &:last-of-type{
-          bottom: 50%;
-          transform: translateY(50%) rotate(45deg);
+          @include mq_tab{
+            left: 9px;
+            bottom: 50%;
+            transform: translateY(-30%) rotate(45deg);
+          }
+          @include mq_sp{
+            left: size_sp(9);
+          }
         }
       }
     }
     span{
       position: absolute;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: $white00;
       transition: 0.5s;
-      @media screen and (max-width: 900px) {
+      @include mq_tab{
         display: block;
       }
-      @include mq_sp{
-        height: size_sp(3);
-      }
       &:first-of-type{
-        top: 0;
+        @include mq_tab{
+          width: 100%;
+          height: 8px;
+          background: $white00;
+          top: 0;
+          left: 0;
+          border-radius: 10px;
+        }
+        @include mq_sp{
+          border-radius: size_sp(10);
+        }
       }
       &:nth-of-type(2){
-        top: 50%;
-        transform: translateY(-50%);
+        @include mq_tab{
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        @include mq_tab{
+          font-size: 18px;
+          font-weight: 700;
+          line-height: (27/18);
+          letter-spacing: .22em;
+        }
+        @include mq_sp{
+          @include fz_vw(18);
+        }
       }
       &:last-of-type{
-        bottom: 0;
+        @include mq_tab{
+          width: 100%;
+          height: 8px;
+          background: $white00;
+          bottom: 0;
+          left: 0;
+          border-radius: 10px;
+        }
+        @include mq_sp{
+          height: size_sp(8);
+          border-radius: size_sp(10);
+        }
       }
     }
   }
   &__right{
-    @include flex(flex, wrap, center, center, normal, row);
-    @media screen and (max-width: 900px) {
+    @include mq_tab{
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      transform: none;
-      width: 100%;
-      padding: 30px 0 30px;
-      background-color: rgba($black00,0.8);
     }
-    @include mq_sp{
-      padding: size_sp(30) 0 size_sp(30);
+    &-inner {
+      @include flex(flex, wrap, center, center, normal, row);
+      @include mq_tab{
+        width: 100vw;
+        padding: 144px 0 185px;
+        background-color: rgba($brown01,.8);
+        flex-direction: column;
+        position : absolute;
+        top: 0;
+        left: -30px;
+        z-index : -1;
+      }
+      @include mq_sp{
+        padding: size_sp(144) 0 size_sp(185);
+        left: size_sp(-30);
+      }
     }
   }
   &__menu{
     @include flex(flex, nowrap, center, flex-end, normal, row);
     width: 100%;
-    @media screen and (max-width: 900px) {
-      display: block;
+    @include mq_tab{
+      width: 438px;
+      margin: 0 auto;
       flex-wrap: wrap;
     }
     @include mq_sp{
+      width: size_sp(438);
     }
-    li{
+    & >li{
       font-size: 20px;
       font-weight: 400;
       line-height: (18/20);
       font-style : Italic;
       letter-spacing: 0.1em;
-      border-bottom: solid 1px $white00;
       @include mq_tab{
-        @include font-size(16);
-      }
-      @media screen and (max-width: 900px) {
-        @include font-size(30);
+        font-size: 24px;
+        line-height: (27/24);
+        font-style: normal;
         text-align: center;
-        line-height: 1;
-        letter-spacing: 0.15em;
-        margin-right: 0;
+        margin: 0 35px;
       }
       @include mq_sp{
-        @include fz_vw(30);
+        @include fz_vw(24);
+        line-height: (27/24);
+        margin: 0 size_sp(35);
       }
       &:nth-of-type(n + 2) {
         margin-left: 29px;
+        @include mq_tab{
+          margin-top: 49px;
+        }
+        @include mq_sp{
+          margin-top: size_sp(49);
+        }
       }
-      &:nth-of-type(3) {
+      &:last-of-type {
         font-size: 18px;
         font-style: normal;
         line-height: (27/18);
         letter-spacing: .2em;
+        @include mq_tab{
+          width: 369px;
+          margin: 49 auto 0;
+          border : solid 1px $white00;
+          border-radius : 50px;
+        }
+        @include mq_sp{
+          @include fz_vw(24);
+          line-height: (29/24);
+          width: size_sp(369);
+          margin: size_sp(49) auto 0;
+          border : solid size_sp(1) $white00;
+          border-radius : size_sp(50);
+        }
+        & > a {
+          @include mq_tab{
+            padding: 15px 0 17px;
+            border-bottom : none;
+          }
+          @include mq_sp{
+            padding: size_sp(15) 0 size_sp(17);
+          }
+        }
       }
-      a{
+      & > a{
         padding-bottom: 6px;
         display: block;
         position: relative;
-        @media screen and (max-width: 900px) {
+        border-bottom: solid 1px $white00;
+        @include mq_tab{
+          padding-bottom: 10px;
           display: inline-block;
-          padding: 39px 0;
+          border-bottom: solid 1px $white00;
         }
         @include mq_sp{
-          padding: size_sp(39) 0;
+          padding-bottom: size_sp(10);
+          border-bottom: solid size_sp(1) $white00;
         }
         & > small {
           font-size: 16px;
@@ -189,13 +276,20 @@ $header_height_sp: size_sp(99);
           letter-spacing: .1em;
           display: block;
           margin-bottom: 2px;
+          @include mq_tab{
+            font-size: 22px;;
+            line-height: (24/22);
+            margin-bottom: -1px;
+          }
+          @include mq_sp{
+            @include fz_vw(22);
+            line-height: (24/22);
+            margin-bottom: size_sp(-1);
+          }
         }
         & > span {
           letter-spacing: .1em;
         }
-      }
-      &:last-of-type{
-        margin-right: 0;
       }
     }
   }
@@ -203,6 +297,16 @@ $header_height_sp: size_sp(99);
     margin-left: 36px;
     @include flex(flex, nowrap, center, center, normal, row);
     position: relative;
+    @include mq_tab{
+      margin-left: 0;
+      position: absolute;
+      left: 50%;
+      bottom: 68px;
+      transform: translateX(-50%);
+    }
+    @include mq_sp{
+      bottom : size_sp(68);
+    }
     & > a {
       font-size: 18px;
       font-weight: 400;
@@ -211,8 +315,26 @@ $header_height_sp: size_sp(99);
       padding: 6px 0;
       display: block;
       border-bottom: solid $white00 1px;
+      @include mq_tab{
+        font-size: 24px;
+        line-height: (27/24);
+        padding: 3px 0;
+        border-bottom: solid $white00 1px;
+      }
+      @include mq_sp{
+        @include fz_vw(28);
+        line-height: (45/28);
+        padding: size_sp(3) 0;
+        border-bottom: solid $white00 size_sp(1);
+      }
       &:nth-of-type(n + 2) {
         margin-left: 26px;
+        @include mq_tab{
+          margin-left: 40px;
+        }
+        @include mq_sp{
+          margin-left: size_sp(40);
+        }
       }
     }
     &:before {
@@ -224,16 +346,39 @@ $header_height_sp: size_sp(99);
       top : 50%;
       left: 50%;
       transform: translate(-90%, -50%);
+      @include mq_sp{
+        @include fz_vw(28);
+        line-height: (45/28);
+      }
     }
   }
   &__sns{
     margin-left: 37px;
     @include flex(flex, nowrap, center, center, normal, row);
+    @include mq_tab{
+      margin-top: 42px;
+      margin-left: 0;
+    }
+    @include mq_sp{
+      margin-top: size_sp(42);
+    }
     & > a {
       width: 37px;
       display: block;
+      @include mq_tab{
+        width: 60px;
+      }
+      @include mq_sp{
+        width: size_sp(60);
+      }
       &:nth-of-type(n + 2) {
         margin-left: 30px;
+        @include mq_tab{
+          margin-left: 50px;
+        }
+        @include mq_sp{
+          margin-left: size_sp(50);
+        }
       }
       & > img {
         height: auto;
