@@ -34,6 +34,63 @@ body{
     pointer-events: auto;
     transition: opacity 1s;
   }
+  // 宿が一つの時
+  &.only {
+    & .top {
+      &-inn {
+        &__high {
+          padding-top: 100px;
+          @include mq_sp{
+            padding-top: size_sp(100);
+          }
+        }
+        &__intro {
+          @include mq_sp{
+            padding-top: size_sp(72);
+          }
+        }
+      }
+      // アクセス
+      &-access {
+        &__list {
+          justify-content: center;
+          & > li {
+            width: 701px;
+            margin : 0 auto;
+            @include mq_sp{
+              width: size_sp(644);
+            }
+          }
+        }
+        &__ttl {
+          top : 15px;
+          left : 17px !important;
+          @include mq_sp{
+            top: size_sp(14);
+            left: size_sp(13) !important;
+          }
+        }
+        &__map {
+          width: 516px;
+          height: 442px;
+          margin: 0 auto;
+          right : 0 !important;
+          @include mq_sp{
+            width: size_sp(516);
+            height: size_sp(442);
+          }
+        }
+        &__detail {
+          width: 392px;
+          padding-left: 10px;
+          @include mq_sp{
+            width: size_sp(362);
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 // =============================================================
@@ -41,7 +98,7 @@ body{
 // =============================================================
 
 .font-ja {
-  font-family: $base-font-family-ja;
+  font-family: "Yu Mincho", "YuMincho", serif;
 }
 .font-en {
   font-family: $base-font-family-en;

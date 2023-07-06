@@ -42,9 +42,9 @@
     </nav>
     <a class="common-footer__contact">お問い合わせ</a>
     <div class="common-footer__low">
-      <a class="#">FAQ</a>
-      <a class="#">利用規約</a>
-      <a class="#">宿泊約款</a>
+      <a class="<?php echo home_url('/faq/');?>">FAQ</a>
+      <a class="<?php echo home_url('/faq/#agreement');?>">利用規約</a>
+      <a class="<?php echo home_url('/faq/#term');?>">宿泊約款</a>
     </div>
     <small class="common-footer__copyright">&copy; 2023 Ferie</small>
   </div>

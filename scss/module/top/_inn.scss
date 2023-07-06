@@ -79,6 +79,9 @@
           width: 30px;
           height: 117px;
           background-image: url(./img/top/icn_arw-w.svg);
+          background-size : cover;
+          background-repeat: no-repeat;
+          background-position: center;
           position: absolute;
           left : 50%;
           bottom : -57px;
@@ -112,6 +115,7 @@
       letter-spacing: .1em;
       position : absolute;
       top : 22px;
+      z-index : 2;
       @include mq_sp{
         @include fz_vw(38);
       }
@@ -220,6 +224,7 @@
               margin-bottom: 43px;
               @include mq_sp{
                 @include fz_vw(26);
+                margin-bottom: size_sp(43);
               }
             }
             &:before {
@@ -989,6 +994,9 @@
       }
       & > li {
         width: 426px;
+        @include mq_tab{
+          margin :0 auto;
+        }
         @include mq_sp{
           margin: 0 auto;
         }
@@ -1000,7 +1008,7 @@
         &:nth-of-type(even) {
           margin-left : 101px;
           @include mq_tab{
-            margin-left: 0;
+            margin: 0 auto;
           }
           @include mq_sp{
             width: size_sp(523);

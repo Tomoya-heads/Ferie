@@ -132,6 +132,7 @@ $header_height_sp: size_sp(115);
           border-radius: 10px;
         }
         @include mq_sp{
+          height: size_sp(8);
           border-radius: size_sp(10);
         }
       }

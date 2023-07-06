@@ -1,4 +1,5 @@
 <?php $secName = "top-inn";?>
+<?php //if ($counter >= 2): //2件目から表示 ?>
 <div class="<?php echo $secName;?>__nav">
   <div class="mod-ttl w">宿のご紹介</div>
   <?php if(have_rows('acf_inn_group','option')):?>
@@ -17,6 +18,7 @@
   </div>
   <?php endif;?>
 </div>
+<?php //endif;?>
 <?php
   if(have_rows('acf_inn_group','option')): while(have_rows('acf_inn_group','option')): the_row();
   $lodge_name = get_sub_field('acf_inn_name');
@@ -26,6 +28,7 @@
 <section id="<?php echo $lodge_link;?>" class="<?php echo $secName;?>">
   <!-- 上段 -->
   <div class="<?php echo $secName;?>__high">
+    <div class="mod-ttl w">宿のご紹介</div>
     <div class="<?php echo $secName;?>__intro">
       <!-- 1段目 -->
       <?php if(have_rows('acf_inn_introduction_01','option')): while(have_rows('acf_inn_introduction_01','option')): the_row(); ?>

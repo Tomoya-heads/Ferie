@@ -2,6 +2,21 @@ window.addEventListener('beforeunload', function(e){
   $('html,body').animate({ scrollTop: 0 }, '1');
 });
 
+// 宿の数
+$(function () {
+  var lodge_number = $('.top-inn').length;
+  // 画面に表示
+  if(lodge_number === 1) {
+    $('body').addClass('only');
+    $('.top-inn__nav').hide();
+  } else {
+    $('.top-inn__nav').show();
+    $('.top-inn__high > .mod-ttl').hide();
+  }
+});
+
+
+// 円形プログレスバー
 $(function(){
   var bar01 = new ProgressBar.Circle(circle01, {
     strokeWidth: 8,
@@ -82,11 +97,13 @@ $(function(){
 
 // KV
 $(function(){
-  var header = $('.common-header')
-  var kvInner = $('.top-kv__inner')
+  var header = $('.common-header');
+  var kvInner = $('.top-kv__inner');
   var scrollCircle = $('.top-kv__scroll')
   var windowHeight = $(window).height();
   var scrollTop = $(window).scrollTop();
+  $('.top-kv').css('height', windowHeight * 4)
+  kvInner.css('height', windowHeight);
   if (scrollTop >= windowHeight) {
     $('.top-kv__sec:first-of-type').addClass('hidden')
   } else  {
@@ -100,8 +117,8 @@ $(function(){
   if (scrollTop >= windowHeight * 3) {
     kvInner.css({
       'position': 'absolute',
-      'top': 'auto',
-      'bottom': '0',
+      'top': windowHeight * 3,
+      'bottom': 'auto',
     })
   } else  {
     kvInner.css({
@@ -143,8 +160,8 @@ $(function(){
     if (scrollTop >= windowHeight * 3) {
       kvInner.css({
         'position': 'absolute',
-        'top': 'auto',
-        'bottom': '0',
+        'top': windowHeight * 3,
+        'bottom': 'auto',
       })
     } else  {
       kvInner.css({

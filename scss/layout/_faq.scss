@@ -60,7 +60,9 @@
   &__main {
     padding: 160px 0;
     background-color: $green02;
-    padding : size_sp(151) 0 size_sp(200);
+    @include mq_sp{
+      padding : size_sp(151) 0 size_sp(200);
+    }
   }
   &__list {
     margin-top: 80px;
@@ -193,9 +195,11 @@
     }
   }
   &__sub {
-    padding-top: 50px;
+    padding-top: 100px;
+    margin-top: -50px;
     @include mq_sp{
-      padding-top: size_sp(151);
+      padding-top: size_sp(201);
+      margin-top: size_sp(-50);
     }
     &-list {
       & > li {
