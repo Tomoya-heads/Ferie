@@ -222,7 +222,7 @@ $header_height_sp: size_sp(115);
       &:nth-of-type(n + 2) {
         margin-left: 29px;
         @include mq_tab{
-          margin-top: 49px;
+          margin: 49px auto 0;
         }
         @include mq_sp{
           margin-top: size_sp(49);
@@ -315,18 +315,21 @@ $header_height_sp: size_sp(115);
       letter-spacing: .2em;
       padding: 6px 0;
       display: block;
-      border-bottom: solid $white00 1px;
       @include mq_tab{
         font-size: 24px;
         line-height: (27/24);
         padding: 3px 0;
-        border-bottom: solid $white00 1px;
       }
       @include mq_sp{
         @include fz_vw(28);
         line-height: (45/28);
         padding: size_sp(3) 0;
-        border-bottom: solid $white00 size_sp(1);
+      }
+      &.now {
+        border-bottom: solid $white00 1px;
+        @include mq_sp{
+          border-bottom: solid $white00 size_sp(1);
+        }
       }
       &:nth-of-type(n + 2) {
         margin-left: 26px;
@@ -354,9 +357,11 @@ $header_height_sp: size_sp(115);
     }
   }
   &__sns{
+    padding-bottom: 2;
     margin-left: 37px;
     @include flex(flex, nowrap, center, center, normal, row);
     @include mq_tab{
+      padding: 0;
       margin-top: 42px;
       margin-left: 0;
     }

@@ -27,11 +27,16 @@
     }
   }
   &__icn{
-    max-width: 155px;
+    width: 180px;
     margin: 0 auto 21px;
+    fill : $black00;
     @include mq_sp{
-      max-width: size_sp(258);
+      width : size_sp(314);
       margin-bottom: size_sp(54);
+    }
+    & svg {
+      width : 100%;
+      fill : $black00;
     }
   }
   &__info{

@@ -1,5 +1,6 @@
 .top-kv {
   // height : 400vh;
+  background-color: $brown04;
   position: relative;
   &__inner {
     width : 100vw;
@@ -61,11 +62,20 @@
         }
         &__container {
           padding: 59px 40px 45px 50px;
-          border-radius : 0px 30px 30px 0px;
           left : 0;
+          @media screen and (min-width: 1281px) {
+            left : 50%;
+            transform: translateX(-133%);
+          }
           @include mq_sp{
             padding: size_sp(72) size_sp(50) size_sp(41);
-            border-radius : 0px size_sp(30) size_sp(30) 0px;
+          }
+          &:before {
+            right: 0;
+            border-radius : 0px 30px 30px 0px;
+            @include mq_sp{
+              border-radius : 0px size_sp(30) size_sp(30) 0px;
+            }
           }
         }
       }
@@ -82,11 +92,20 @@
         }
         &__container {
           padding: 59px 50px 45px 40px;
-          border-radius : 30px 0px 0px 30px;
           right : 0;
+          @media screen and (min-width: 1281px) {
+            right: 50%;
+            transform: translateX(133%);
+          }
           @include mq_sp{
             padding: size_sp(72) size_sp(50) size_sp(41);
-            border-radius : size_sp(30) 0px 0px size_sp(30);
+          }
+          &:before {
+            left: 0;
+            border-radius : 30px 0px 0px 30px;
+            @include mq_sp{
+              border-radius : size_sp(30) 0px 0px size_sp(30);
+            }
           }
         }
       }
@@ -125,7 +144,6 @@
     line-height: 1.5;
     letter-spacing: .1em;
     color : $white00;
-    background-color: rgba($brown04, .6);
     width: 479px;
     position : absolute;
     top : 50%;
@@ -133,6 +151,15 @@
     @include mq_sp{
       @include fz_vw(24);
       width: size_sp(601);
+    }
+    &:before {
+      content : "";
+      width: 100vw;
+      height: 100%;
+      background-color: rgba($brown04, .6);
+      position: absolute;
+      top : 0;
+      z-index: -1;
     }
   }
   &__scroll {

@@ -37,6 +37,9 @@ body{
   // 宿が一つの時
   &.only {
     & .top {
+      &-kv {
+        background-color: $brown02;
+      }
       &-inn {
         &__high {
           padding-top: 100px;

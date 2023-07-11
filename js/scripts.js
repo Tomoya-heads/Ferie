@@ -42,14 +42,24 @@ $(function(){
         $(this).toggleClass("open");
         header_nav.fadeToggle();
       })
-      $('.common-header__menu > li > a').on("click",function(){
-        $(header_toggle).removeClass("open");
-        header_nav.fadeOut();
-      })
+
+        $('.common-header__menu > li > a').on("click",function(){
+          $(header_toggle).removeClass("open");
+          header_nav.fadeOut();
+        })
     }else{
       //header_nav.show();
     }
   }
+  // ヘッダーメニュー以外を触った時の処理
+  $(document).on('click',   function(e) {
+    if($('.common-header__toggle').hasClass('open')) {
+    if (!$(e.target).closest('.common-header').length) {
+        $(header_toggle).removeClass("open");
+        header_nav.fadeOut();
+      }
+    }
+  });
   window.onload = checkMediaQuery();
   let lastInnerWidth = window.innerWidth;
   window.addEventListener( "resize", function () {

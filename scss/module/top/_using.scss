@@ -20,7 +20,7 @@
       @include mq_tab{
         width: 680px;
         margin: 0 auto;
-        @include flex(flex, wrap, flex-start, center, normal, row);
+        @include flex(flex, nowrap, flex-start, center, normal, row);
       }
       @include mq_sp{
         width: size_sp(648);

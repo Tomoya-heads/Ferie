@@ -37,14 +37,25 @@
     </div>
     <nav class="common-footer__nav">
       <ul class="common-footer__navMenu">
-        <li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#villa1"><span>Ferie</span>Lodge 1st</a></li>
+        <?php 
+          if(have_rows('acf_inn_group','option')):
+          while(have_rows('acf_inn_group','option')): the_row();
+          $lodge_name = get_sub_field('acf_inn_name');
+          $lodge_link = get_sub_field('acf_inn_link');
+        ?>
+        <li>
+          <a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#<?php echo $lodge_link;?>">
+            <?php echo $lodge_name;?>
+          </a>
+        </li>
+        <?php endwhile; endif;?>
       </ul>
     </nav>
     <a class="common-footer__contact">お問い合わせ</a>
     <div class="common-footer__low">
-      <a class="<?php echo home_url('/faq/');?>">FAQ</a>
-      <a class="<?php echo home_url('/faq/#agreement');?>">利用規約</a>
-      <a class="<?php echo home_url('/faq/#term');?>">宿泊約款</a>
+      <a href="<?php echo home_url('/faq/');?>">FAQ</a>
+      <a href="<?php echo home_url('/faq/#term');?>">利用規約</a>
+      <a href="<?php echo home_url('/faq/#agreement');?>">宿泊約款</a>
     </div>
     <small class="common-footer__copyright">&copy; 2023 Ferie</small>
   </div>

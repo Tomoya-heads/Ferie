@@ -55,9 +55,13 @@ $(function(){
     var circlePercentage03 = (scrollPercentage / 100)- 2; // スクロール位置の割合
     var count = Math.floor(scrollPercentage); // 3つずつカウントアップ
     if (scrollTop === 0) {
+      bar01.animate(0);
       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
     }
-    if (scrollTop >= windowHeight * 3) {
+    if (scrollTop < 0) {
+        circlePercentage = 0;
+      $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
+    } else if (scrollTop >= windowHeight * 3) {
       bar03.animate(1.0);
       $('#counter').text('100' + "%"); // カウントを表示するなど、必要な処理を行う
     } else if (scrollTop >= windowHeight * 2) {
@@ -67,9 +71,11 @@ $(function(){
       $('#circle01').addClass('hidden');
       $('#circle02').removeClass('hidden');
       $('#counter').text(count - 99 + "%"); // カウントを表示するなど、必要な処理を行う
-    } else  if (scrollTop === 0) {
+    } else if (scrollTop < windowHeight) {
       $('#circle01').removeClass('hidden');
-        bar01.animate(circlePercentage);
+      $('#counter').text(count + "%"); // カウントを表示するなど、必要な処理を行う
+    } else  if (scrollTop === 0) {
+        bar01.animate(0);
       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
     } else {
       $('#counter').text(count + 1 + "%"); // カウントを表示するなど、必要な処理を行う
@@ -83,7 +89,11 @@ $(function(){
     // } else if (scrollTop === 0) {
     //   bar01.animate(0);
     // } else {
+      if (scrollTop < 0) {
+        bar01.animate(0);
+      } else {
         bar01.animate(circlePercentage);
+      }
         bar02.animate(circlePercentage02);
       if (circlePercentage03 <= 1.0) {
         bar03.animate(circlePercentage03);

@@ -41,13 +41,13 @@
 				<!-- *** logo *** -->
 				<?php if(is_front_page()): ?>
 					<h1 class="common-header__logo">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<a href="<?php if(is_page('en') || is_page('en/faq/')){ echo esc_url( home_url( 'en' ));} else { echo esc_url( home_url( '/' ));} ?>">
 							<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/logo_ferie-beside.svg" alt="<?php bloginfo('name');?>">
 						</a>
 					</h1>
 				<?php else: ?>
 					<div class="common-header__logo">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<a href="<?php if(is_page('en') || is_page('en/faq/')){ echo esc_url( home_url( 'en' ));} else { echo esc_url( home_url( '/' ));} ?>">
 						<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/logo_ferie-beside.svg" alt="<?php bloginfo('name');?>">
 						</a>
 					</div>
@@ -62,14 +62,22 @@
 					<div class="common-header__right-inner">
 						<nav class="common-header__nav">
 							<ul class="common-header__menu">
-								<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#ferielodge1st"><small>Ferie</small>Lodge<span> 1st</span></a></li>
-								<li><a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#ferielodge2nd"><small>Ferie</small>Lodge<span> 2nd</span></a></li>
+								<?php 
+									if(have_rows('acf_inn_group','option')):
+									while(have_rows('acf_inn_group','option')): the_row();
+									$lodge_name = get_sub_field('acf_inn_name');
+									$lodge_link = get_sub_field('acf_inn_link');
+								?>
+								<li>
+									<a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#<?php echo $lodge_link;?>"><?php echo $lodge_name;?></a>
+								</li>
+								<?php endwhile; endif;?>
 								<li><a href="<?php echo home_url( '/contact/' ); ?>">お問い合わせ</a></li>
 							</ul>
 						</nav>
 						<div class="common-header__lang">
-							<a class="#">JP</a>
-							<a class="#">EN</a>
+							<a class="<?php if(is_front_page() || is_page('faq') && !is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/' ));?>">JP</a>
+							<a class="<?php if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/en/' ));?>">EN</a>
 						</div>
 						<div class="common-header__sns">
 							<a class="#">

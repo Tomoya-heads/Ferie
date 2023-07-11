@@ -1,12 +1,18 @@
-<?php $secName = "top-inn";?>
-<?php //if ($counter >= 2): //2件目から表示 ?>
+<?php
+  $secName = "top-inn";
+?>
+
 <div class="<?php echo $secName;?>__nav">
   <div class="mod-ttl w">宿のご紹介</div>
   <?php if(have_rows('acf_inn_group','option')):?>
   <div class="<?php echo $secName;?>__nav-list">
   <?php
     while(have_rows('acf_inn_group','option')): the_row();
-    $lodge_name = get_sub_field('acf_inn_name');
+    if(is_page('en')) {
+      $lodge_name = get_sub_field('acf_inn_name_en');
+    } else {
+      $lodge_name = get_sub_field('acf_inn_name');
+    }
     $lodge_link = get_sub_field('acf_inn_link');
     $lodge_img = get_sub_field('acf_inn_main_img');
   ?>
@@ -18,10 +24,18 @@
   </div>
   <?php endif;?>
 </div>
-<?php //endif;?>
+
 <?php
   if(have_rows('acf_inn_group','option')): while(have_rows('acf_inn_group','option')): the_row();
-  $lodge_name = get_sub_field('acf_inn_name');
+  if(is_page('en')) {
+    $lodge_name = get_sub_field('acf_inn_name_en');
+    $lodge_concept = get_sub_field('acf_inn_feature_concept_en');
+    $amenities = get_sub_field('acf_inn_amenities_en');
+  } else {
+    $lodge_name = get_sub_field('acf_inn_name');
+    $lodge_concept = get_sub_field('acf_inn_feature_concept');
+    $amenities = get_sub_field('acf_inn_amenities');
+  }
   $lodge_link = get_sub_field('acf_inn_link');
   $lodge_img = get_sub_field('acf_inn_main_img');
 ?>
@@ -31,33 +45,57 @@
     <div class="mod-ttl w">宿のご紹介</div>
     <div class="<?php echo $secName;?>__intro">
       <!-- 1段目 -->
-      <?php if(have_rows('acf_inn_introduction_01','option')): while(have_rows('acf_inn_introduction_01','option')): the_row(); ?>
+      <?php if(have_rows('acf_inn_introduction_01','option')): while(have_rows('acf_inn_introduction_01','option')): the_row();
+        if(is_page('en')) {
+          $lodge01_txt = get_sub_field('acf_inn_introduction_01_txt_en');
+        } else {
+          $lodge01_txt = get_sub_field('acf_inn_introduction_01_txt');
+        }
+      ?>
       <div class="<?php echo $secName;?>__intro-sec">
         <div class="<?php echo $secName;?>__intro-inner">
           <div class="<?php echo $secName;?>__intro-ttl font-en"><?php echo $lodge_name;?></div>
-          <div class="<?php echo $secName;?>__intro-txt"><span><?php the_sub_field('acf_inn_introduction_01_txt');?></span></div>
+          <div class="<?php echo $secName;?>__intro-txt"><span><?php echo $lodge01_txt;?></span></div>
           <div class="<?php echo $secName;?>__intro-img"><img class="object_fit" src="<?php echo $lodge_img;?>"></div>
         </div>
       </div>
       <?php endwhile; endif;?>
 
       <!-- 2段目 -->
-      <?php if(have_rows('acf_inn_introduction_02','option')): while(have_rows('acf_inn_introduction_02','option')): the_row(); ?>
+      <?php
+      if(have_rows('acf_inn_introduction_02','option')): while(have_rows('acf_inn_introduction_02','option')): the_row();
+      if(is_page('en')) {
+        $lodge02_ttl = get_sub_field('acf_inn_introduction_02_ttl_en');
+        $lodge02_txt = get_sub_field('acf_inn_introduction_02_txt_en');
+      } else {
+        $lodge02_ttl = get_sub_field('acf_inn_introduction_02_ttl');
+        $lodge02_txt = get_sub_field('acf_inn_introduction_02_txt');
+      } 
+      ?>
       <div class="<?php echo $secName;?>__intro-sec">
         <div class="<?php echo $secName;?>__intro-inner">
-          <div class="<?php echo $secName;?>__intro-ttl font-ja"><?php the_sub_field('acf_inn_introduction_02_ttl');?></div>
-          <div class="<?php echo $secName;?>__intro-txt"><span><?php the_sub_field('acf_inn_introduction_02_txt');?></span></div>
+          <div class="<?php echo $secName;?>__intro-ttl font-ja"><?php echo $lodge02_ttl;?></div>
+          <div class="<?php echo $secName;?>__intro-txt"><span><?php echo $lodge02_txt;?></span></div>
           <div class="<?php echo $secName;?>__intro-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_introduction_02_img');?>"></div>
         </div>
       </div>
       <?php endwhile; endif;?>
 
       <!-- 3段目 -->
-      <?php if(have_rows('acf_inn_introduction_03','option')): while(have_rows('acf_inn_introduction_03','option')): the_row(); ?>
+      <?php
+        if(have_rows('acf_inn_introduction_03','option')): while(have_rows('acf_inn_introduction_03','option')): the_row();
+        if(is_page('en')) {
+          $lodge03_ttl = get_sub_field('acf_inn_introduction_03_ttl_en');
+          $lodge03_txt = get_sub_field('acf_inn_introduction_03_txt_en');
+        } else {
+          $lodge03_ttl = get_sub_field('acf_inn_introduction_03_ttl');
+          $lodge03_txt = get_sub_field('acf_inn_introduction_03_txt');
+       }
+      ?>
       <div class="<?php echo $secName;?>__intro-sec">
         <div class="<?php echo $secName;?>__intro-inner">
-          <div class="<?php echo $secName;?>__intro-ttl font-ja"><?php the_sub_field('acf_inn_introduction_03_ttl');?></div>
-          <div class="<?php echo $secName;?>__intro-txt"><span><?php the_sub_field('acf_inn_introduction_03_txt');?></span></div>
+          <div class="<?php echo $secName;?>__intro-ttl font-ja"><?php echo $lodge03_ttl;?></div>
+          <div class="<?php echo $secName;?>__intro-txt"><span><?php echo $lodge03_txt;?></span></div>
           <div class="<?php echo $secName;?>__intro-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_introduction_03_img');?>"></div>
         </div>
       </div>
@@ -71,14 +109,23 @@
     <div class="<?php echo $secName;?>__feature">
       <div class="<?php echo $secName;?>__feature-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_img');?>"></div>
       <div class="<?php echo $secName;?>__feature-intro"><span class="font-en"><?php echo $lodge_name;?></span>の特徴</div>
-      <div class="<?php echo $secName;?>__feature-concept font-ja"><?php the_sub_field('acf_inn_feature_concept');?></div>
+      <div class="<?php echo $secName;?>__feature-concept font-ja"><?php echo $lodge_concept;?></div>
       <?php if(have_rows('acf_inn_feature_group','option')): ?>
       <ul class="<?php echo $secName;?>__feature-list">
-        <?php while(have_rows('acf_inn_feature_group','option')): the_row(); ?>
+        <?php
+          while(have_rows('acf_inn_feature_group','option')): the_row();
+          if(is_page('en')) {
+            $feature_ttl = get_sub_field('acf_inn_feature_ttl_en');
+            $feature_txt = get_sub_field('acf_inn_feature_explanation_en');
+          } else {
+            $feature_ttl = get_sub_field('acf_inn_feature_ttl');
+            $feature_txt = get_sub_field('acf_inn_feature_explanation');
+         }
+        ?>
         <li>
           <div class="<?php echo $secName;?>__feature-icn"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_icn');?>"></div>
-          <div class="<?php echo $secName;?>__feature-ttl"><?php the_sub_field('acf_inn_feature_ttl');?></div>
-          <div class="<?php echo $secName;?>__feature-explanation"><?php the_sub_field('acf_inn_feature_explanation');?></div>
+          <div class="<?php echo $secName;?>__feature-ttl"><?php echo $feature_ttl;?></div>
+          <div class="<?php echo $secName;?>__feature-explanation"><?php echo $feature_txt;?></div>
         </li>
         <?php endwhile;?>
       </ul>
@@ -86,7 +133,15 @@
     </div>
     <!-- 設備紹介 -->
     <div class="<?php echo $secName;?>__facility">
-      <div class="mod-ttl">設備紹介</div>
+      <div class="mod-ttl">
+        <?php
+          if(is_page('en')) {
+            echo 'Equipment Introduction';
+          } else {
+            echo '設備紹介';
+          }
+        ?>
+      </div>
 
       <div class="<?php echo $secName;?>__facility-inner">
         <div class="<?php echo $secName;?>__facility-left">
@@ -142,10 +197,19 @@
           <div class="<?php echo $secName;?>__facility-left-num"></div>
         </div>
         <div class="<?php echo $secName;?>__facility-right">
-          <?php if(have_rows('acf_inn_facility_group')): while(have_rows('acf_inn_facility_group')): the_row();?>
+          <?php
+          if(have_rows('acf_inn_facility_group')): while(have_rows('acf_inn_facility_group')): the_row();
+            if(is_page('en')) {
+              $facility_name = get_sub_field('acf_inn_facility_name_en');
+              $facility_txt = get_sub_field('acf_inn_facility_txt_en');
+            } else {
+              $facility_name = get_sub_field('acf_inn_facility_name');
+              $facility_txt = get_sub_field('acf_inn_facility_txt');
+            }
+          ?>
           <div  class="<?php echo $secName;?>__facility-right-inner">
-              <h3 class="<?php echo $secName;?>__facility-right-ttl"><?php the_sub_field('acf_inn_facility_name');?><br>について</h3>
-              <p class="<?php echo $secName;?>__facility-right-txt"><?php the_sub_field('acf_inn_facility_txt');?></p>
+              <h3 class="<?php echo $secName;?>__facility-right-ttl"><?php echo $facility_name;?><br>について</h3>
+              <p class="<?php echo $secName;?>__facility-right-txt"><?php echo $facility_txt;?></p>
           </div>
           <?php endwhile; endif;?>
         </div>
@@ -156,35 +220,90 @@
       <ul class="<?php echo $secName;?>__info-list">
         <!-- 施設情報 -->
         <li>
-          <div class="<?php echo $secName;?>__info-ttl font-ja">施設情報</div>
+          <div class="<?php echo $secName;?>__info-ttl font-ja">
+          <?php
+            if(is_page('en')) {
+              echo 'Facility Information';
+            } else {
+              echo '施設情報';
+            }
+          ?>
+          </div>
           <ul class="<?php echo $secName;?>__info-facility">
           <!-- 営業時間 -->
             <li>
-              <div class="<?php echo $secName;?>__info-facility-left">営業時間</div>
+              <div class="<?php echo $secName;?>__info-facility-left">
+              <?php
+                if(is_page('en')) {
+                  echo 'Business Hours';
+                } else {
+                  echo '営業時間';
+                }
+              ?>
+              </div>
               <?php if(have_rows('acf_inn_business_hours_group')): while(have_rows('acf_inn_business_hours_group')): the_row();?>
               <div class="<?php echo $secName;?>__info-facility-right">
-                チェックイン　　<?php the_sub_field('acf_inn_business_hours_checkin');?><br>
-                チェックアウト　　<?php the_sub_field('acf_inn_business_hours_checkout');?>
+              <?php
+              if(is_page('en')) {
+                $business_hours_checkin = 'CHECK IN';
+                $business_hours_checkout = 'CHECK OUT';
+              } else {
+                $business_hours_checkin = 'チェックイン';
+                $business_hours_checkout = 'チェックアウト';
+              }
+              ?>
+                <?php echo $business_hours_checkin;?>　　<?php the_sub_field('acf_inn_business_hours_checkin');?><br>
+                <?php echo $business_hours_checkout;?>　　<?php the_sub_field('acf_inn_business_hours_checkout');?>
               </div>
               <?php endwhile; endif;?>
             </li>
-            <!-- 営業時間 -->
+            <!-- アメニティ -->
             <li>
-              <div class="<?php echo $secName;?>__info-facility-left">アメニティー</div>
-              <div class="<?php echo $secName;?>__info-facility-right"><?php the_sub_field('acf_inn_amenities');?></div>
+              <div class="<?php echo $secName;?>__info-facility-left">
+              <?php
+                if(is_page('en')) {
+                  echo 'Amenities';
+                } else {
+                  echo 'アメニティ';
+                }
+              ?>
+              </div>
+              <div class="<?php echo $secName;?>__info-facility-right"><?php echo $amenities;?></div>
             </li>
           </ul>
         </li>
         <!-- 宿泊料金 -->
         <li>
-          <div class="<?php echo $secName;?>__info-ttl font-ja">宿泊料金</div>
-          <?php if(have_rows('acf_inn_fee_group')): while(have_rows('acf_inn_fee_group')): the_row();?>
-            <div class="<?php echo $secName;?>__info-explanation"><?php the_sub_field('acf_inn_fee_explanation');?></div>
+          <div class="<?php echo $secName;?>__info-ttl font-ja">
+            <?php
+              if(is_page('en')) {
+                echo 'Lodge Fee';
+              } else {
+                echo '宿泊料金';
+              }
+            ?>
+          </div>
+          <?php 
+            if(have_rows('acf_inn_fee_group')): while(have_rows('acf_inn_fee_group')): the_row();
+            if(is_page('en')) {
+              $fee_explanation = get_sub_field('acf_inn_fee_explanation_en');
+            } else {
+              $fee_explanation = get_sub_field('acf_inn_fee_explanation');
+            }
+          ?>
+            <div class="<?php echo $secName;?>__info-explanation"><?php echo $fee_explanation;?></div>
             <?php if(have_rows('acf_inn_fee_detail_group')):?>
             <ul class="<?php echo $secName;?>__info-fee">
-              <?php while(have_rows('acf_inn_fee_detail_group')): the_row();?>
+              <?php
+                while(have_rows('acf_inn_fee_detail_group')): the_row();
+                if(is_page('en')) {
+                  $detail_date = get_sub_field('acf_inn_fee_detail_date_en');
+                } else {
+                  $detail_date = get_sub_field('acf_inn_fee_detail_date');
+                }
+              ?>
               <li>
-                <div class="<?php echo $secName;?>__info-fee-left"><?php the_sub_field('acf_inn_fee_detail_date');?></div>
+                <div class="<?php echo $secName;?>__info-fee-left"><?php echo $detail_date;?></div>
                 <div class="<?php echo $secName;?>__info-fee-right">¥<?php the_sub_field('acf_inn_fee_detail_number');?></div>
               </li>
               <?php endwhile;?>
@@ -193,10 +312,17 @@
             <!-- 注意事項 -->
             <?php if(have_rows('acf_inn_fee_caution_group')):?>
             <ul class="<?php echo $secName;?>__info-caution">
-              <?php while(have_rows('acf_inn_fee_caution_group')): the_row();?>
+              <?php
+                while(have_rows('acf_inn_fee_caution_group')): the_row();
+                if(is_page('en')) {
+                  $caution_container = get_sub_field('acf_inn_fee_caution_container_en');
+                } else {
+                  $caution_container = get_sub_field('acf_inn_fee_caution_container');
+                }
+              ?>
               <li>
                 <div class="<?php echo $secName;?>__info-caution-left">※</div>
-                <div class="<?php echo $secName;?>__info-caution-right"><?php the_sub_field('acf_inn_fee_caution_container');?></div>
+                <div class="<?php echo $secName;?>__info-caution-right"><?php echo $caution_container;?></div>
               </li>
               <?php endwhile;?>
             </ul>
