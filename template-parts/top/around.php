@@ -23,12 +23,12 @@ endwhile; endif;
       }
     ?>
   </div>
-  <?php if(have_rows('acf_around_facility_group','option')):?>
+  <?php if(have_rows('acf_around_facility_group','option')): $i = 0;?>
   <ul class="<?php echo $secName;?>__list">
-    <?php while(have_rows('acf_around_facility_group','option')): the_row();?>
+    <?php while(have_rows('acf_around_facility_group','option')): the_row(); $i++;?>
     <!-- 01 -->
     <li>
-      <div class="<?php echo $secName;?>__name"><span><?php echo $facility_name;?></span></div>
+      <div class="<?php echo $secName;?>__name"><span><?php echo $i;?>.<?php echo $facility_name;?></span></div>
       <div class="<?php echo $secName;?>__img">
         <img class="object_fit" src="<?php the_sub_field('acf_around_facility_img');?>">
         <div class="<?php echo $secName;?>__tag"><?php echo $facility_tag;?></div>
