@@ -237,6 +237,7 @@
             line-height : 1;
             width: 276px;
             padding-left: 26px;
+            @include flex(flex, wrap, center, center, normal, column);
             white-space: nowrap;
             @include mq_sp{
               @include fz_vw(38);
@@ -1206,7 +1207,7 @@
         font-size: 18px;
         font-weight: 400;
         line-height: (30/18);
-        letter-spacing: .16em;
+        letter-spacing: .05em;
         text-align: center;
         width: 180px;
         border : solid 1px $brown04;

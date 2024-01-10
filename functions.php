@@ -79,7 +79,7 @@ add_action('wp_enqueue_scripts', 'ferie_scripts');
 require get_template_directory().'/inc/reset.php';
 require get_template_directory().'/inc/device_if.php';
 require get_template_directory().'/inc/body_class.php';
-require get_template_directory().'/inc/hide_author.php';
+// require get_template_directory().'/inc/hide_author.php';
 require get_template_directory().'/inc/get_form_id.php';
 require get_template_directory().'/inc/acf_add_options_page.php';
 require get_template_directory().'/inc/change_posts_archive.php';

@@ -64,6 +64,18 @@
             <?php endwhile;?>
           </ul>
           <?php endif;?>
+          <ul class="<?php echo $pageName;?>__term-shortcode">
+            <li>
+              <div class="<?php echo $pageName;?>__term-shortcode-ttl">別表第1　宿泊料金等の内訳(第2条第1項及び第12条第1項関係)</div>
+              <div class="<?php echo $pageName;?>__term-shortcode-inner"><?php echo do_shortcode('[table id=1 /]'); ?></div>
+              <div class="<?php echo $pageName;?>__term-shortcode-caution">備考1 税法が改正された場合はその改正された規定によるものとします。</div>
+            </li>
+            <li>
+              <div class="<?php echo $pageName;?>__term-shortcode-ttl">別表第2　違約金(第6条第2項関係)</div>
+              <div class="<?php echo $pageName;?>__term-shortcode-inner"><?php echo do_shortcode('[table id=2 /]'); ?></div>
+              <div class="<?php echo $pageName;?>__term-shortcode-caution">(注)%は、基本宿泊料に対する違約金の比率です。</div>
+            </li>
+          </ul>
       </li>
       <!-- プライバシーポリシー -->
       <li id="privacy">

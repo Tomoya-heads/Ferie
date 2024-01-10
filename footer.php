@@ -5,22 +5,22 @@
 <footer class="common-footer" id="Footer">
   <!-- 予約ボタン -->
   <div class="fixed-btn">
-  <div class="fixed-btn__inner">
-  <div class="fixed-btn__txt">予約は<br>こちら</div>
-  <?php if(have_rows('acf_inn_group','option')):?>
-  <div class="fixed-btn__list">
-    <?php
-      while(have_rows('acf_inn_group','option')): the_row();
-      $lodge_name = get_sub_field('acf_inn_name');
-      $lodge_link = get_sub_field('acf_inn_link');
-    ?>
-    <a class="font-en" href="#" target="_blank"><?php echo $lodge_name;?></a>
-    <?php endwhile;?>
+    <div class="fixed-btn__inner">
+      <div class="fixed-btn__txt">予約は<br>こちら</div>
+      <?php if(have_rows('acf_inn_group','option')):?>
+      <div class="fixed-btn__list">
+        <?php
+          while(have_rows('acf_inn_group','option')): the_row();
+          $lodge_name = get_sub_field('acf_inn_name');
+          $lodge_reserve_link = get_sub_field('acf_inn_reserve_link');
+        ?>
+        <a class="font-en" href="<?php echo $lodge_reserve_link;?>" target="_blank"><?php echo $lodge_name;?></a>
+        <?php endwhile;?>
+      </div>
+      <?php endif;?>
+    </div>
   </div>
-  <?php endif;?>
-  </div>
-</div>
-<!-- ここまで -->
+  <!-- ここまで -->
   <div class="common-footer__inner">
     <div class="common-footer__logo">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -28,10 +28,10 @@
       </a>
     </div>
     <div class="common-footer__sns">
-      <a class="#">
+      <a href="https://www.instagram.com/ferie_vacation/" target="_blank">
         <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
       </a>
-      <a class="#">
+      <a href="https://www.facebook.com/ferievacation" target="_blank">
         <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_facebook.svg" alt="facebook">
       </a>
     </div>
@@ -51,7 +51,7 @@
         <?php endwhile; endif;?>
       </ul>
     </nav>
-    <a class="common-footer__contact">お問い合わせ</a>
+    <a class="common-footer__contact" href="mailto:info@ferie.jp">お問い合わせ</a>
     <div class="common-footer__low">
       <a href="<?php echo home_url('/faq/');?>">FAQ</a>
       <a href="<?php echo home_url('/faq/#term');?>">利用規約</a>

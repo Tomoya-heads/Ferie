@@ -28,6 +28,9 @@
     &:first-of-type {
       background-image: url(./img/top/kv/bg_kv01.jpg);
       z-index : 3;
+      @include mq_sp{
+        background-image: url(./img/top/kv/bg_kv01-sp.jpg);
+      }
       & .top-kv {
         &__ttl {
           font-size: 62px;
@@ -53,6 +56,9 @@
     &:nth-of-type(2) {
       background-image: url(./img/top/kv/bg_kv02.jpg);
       z-index : 2;
+      @include mq_sp{
+        background-image: url(./img/top/kv/bg_kv02-sp.jpg);
+      }
       & .top-kv {
         &__ttl {
           left: 45px;
@@ -83,6 +89,9 @@
     &:nth-of-type(3) {
       background-image: url(./img/top/kv/bg_kv03.jpg);
       z-index : 1;
+      @include mq_sp{
+        background-image: url(./img/top/kv/bg_kv03-sp.jpg);
+      }
       & .top-kv {
         &__ttl {
           right: 45px;

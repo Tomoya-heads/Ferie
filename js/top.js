@@ -1,6 +1,6 @@
-window.addEventListener('beforeunload', function(e){
-  $('html,body').animate({ scrollTop: 0 }, '1');
-});
+// window.addEventListener('beforeunload', function(e){
+//   $('html,body').animate({ scrollTop: 0 }, '1');
+// });
 
 // 宿の数
 $(function () {
@@ -108,10 +108,11 @@ $(function(){
 // KV
 $(function(){
   var header = $('.common-header');
+  var $kvTarget = $('.top-kv');
   var kvInner = $('.top-kv__inner');
   var scrollCircle = $('.top-kv__scroll')
   var windowHeight = $(window).height();
-  var scrollTop = $(window).scrollTop();
+  var scrollTop = $kvTarget.scrollTop();
   $('.top-kv').css('height', windowHeight * 4)
   kvInner.css('height', windowHeight);
   if (scrollTop >= windowHeight) {
@@ -186,6 +187,14 @@ $(function(){
       header.css('background','transparent');
     }
   });
+});
+$(function() {
+  var windowHeight = $(window).height();
+  var scrollTop = $(window).scrollTop();
+  if (scrollTop >= windowHeight * 4) {
+    $('#circle01').addClass('hidden');
+    $('#circle02').addClass('hidden');
+  }
 });
 
 // 追従タイトル

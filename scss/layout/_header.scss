@@ -370,6 +370,7 @@ $header_height_sp: size_sp(115);
     }
     & > a {
       width: 37px;
+      line-height: 1;
       display: block;
       @include mq_tab{
         width: 60px;
@@ -386,9 +387,9 @@ $header_height_sp: size_sp(115);
           margin-left: size_sp(50);
         }
       }
-      & > img {
-        height: auto;
-      }
+      // & > img {
+      //   height: auto;
+      // }
     }
   }
 }

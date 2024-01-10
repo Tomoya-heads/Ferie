@@ -9,5 +9,7 @@
     }
     ?>
   </div>
-  <div class="<?php echo $secName;?>__img"></div>
+  <div class="<?php echo $secName;?>__img">
+    <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/top/img_map.png" alt="周辺MAP">
+  </div>
 </section>

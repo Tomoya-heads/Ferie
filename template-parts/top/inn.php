@@ -252,7 +252,7 @@
                 $business_hours_checkout = 'チェックアウト';
               }
               ?>
-                <?php echo $business_hours_checkin;?>　　<?php the_sub_field('acf_inn_business_hours_checkin');?><br>
+                <?php echo $business_hours_checkin;?>　　　<?php the_sub_field('acf_inn_business_hours_checkin');?><br>
                 <?php echo $business_hours_checkout;?>　　<?php the_sub_field('acf_inn_business_hours_checkout');?>
               </div>
               <?php endwhile; endif;?>

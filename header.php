@@ -23,14 +23,14 @@
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-NCGSJ22');</script>
+	})(window,document,'script','dataLayer','GTM-T9ZCF38C');</script>
 	<!-- End Google Tag Manager -->
 
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCGSJ22"
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9ZCF38C"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 	<div id="Wrapper">
@@ -72,18 +72,18 @@
 									<a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#<?php echo $lodge_link;?>"><?php echo $lodge_name;?></a>
 								</li>
 								<?php endwhile; endif;?>
-								<li><a href="<?php echo home_url( '/contact/' ); ?>">お問い合わせ</a></li>
+								<li><a href="mailto:info@ferie.jp">お問い合わせ</a></li>
 							</ul>
 						</nav>
-						<div class="common-header__lang">
-							<a class="<?php if(is_front_page() || is_page('faq') && !is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/' ));?>">JP</a>
-							<a class="<?php if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/en/' ));?>">EN</a>
-						</div>
+						<!-- <div class="common-header__lang">
+							<a class="<?php //if(is_front_page() || is_page('faq') && !is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php //echo esc_url( home_url( '/' ));?>">JP</a>
+							<a class="<?php //if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php //echo esc_url( home_url( '/en/' ));?>">EN</a>
+						</div> -->
 						<div class="common-header__sns">
-							<a class="#">
+							<a href="https://www.instagram.com/ferie_vacation/" target="_blank">
 									<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
 							</a>
-							<a class="#">
+							<a href="https://www.facebook.com/ferievacation" target="_blank">
 								<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_facebook.svg" alt="facebook">
 							</a>
 						</div>
