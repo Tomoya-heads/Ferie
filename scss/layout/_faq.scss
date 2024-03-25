@@ -167,6 +167,9 @@
       width: 20px;
       height: 10px;
       background-image: url(./img/page/faq/icn_dogleg.svg);
+      background-size : cover;
+      background-position: center;
+      background-repeat: no-repeat;
       position : absolute;
       top : 50%;
       left : 50%;
@@ -227,6 +230,14 @@
               @include mq_sp{
                 padding-top: size_sp(118);
               }
+            }
+          }
+        }
+        &:nth-of-type(3) {
+          & .mod-ttl {
+            margin-bottom: 84px;
+            @include mq_sp{
+              margin-bottom: size_sp(90);
             }
           }
         }

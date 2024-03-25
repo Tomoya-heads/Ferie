@@ -38,6 +38,8 @@ $secName = "top-around";
       $snsIcn = 'icn_facebook';
     } elseif($snsValue === 'link') {
       $snsIcn = 'icn_link';
+    } else {
+      
     }
       ?>
     <!-- 01 -->
@@ -48,7 +50,7 @@ $secName = "top-around";
         <div class="<?php echo $secName;?>__tag"><?php echo $facility_tag;?></div>
         <a class="<?php echo $secName;?>__sns" href="<?php echo $facility_link['url']; ?>" target="<?php echo $facility_link['target'];?>">
           <span>
-            <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/<?php echo $snsIcn;?>.svg" alt="<?php echo $snsLabel;?>">
+            <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/<?php echo $snsIcn;?>.svg" alt="<?php echo $facility_name;?>">
           </span>
         </a>
       </div>

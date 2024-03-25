@@ -649,16 +649,20 @@
       }
     }
     &-list {
+      max-width: 870px;
+      width: 100%;
+      margin: 0 auto;
       padding-top: 64px;
       @include flex(flex, wrap, center, normal, normal, row);
       @include mq_tab{
         flex-direction: column;
       }
       @include mq_sp{
+        max-width: size_sp(574);
        padding-top: size_sp(85);
       }
       & > li {
-        width: 300px;
+        width: 400px;
         @include mq_tab{
           width: 748px;
           margin : 0 auto;
@@ -668,20 +672,30 @@
           width: size_sp(574);
           @include flex(flex, wrap, center, center, normal, row);
         }
+        &:nth-of-type(n + 3) {
+          margin-top: 54px;
+          @include mq_sp{
+            margin-top: size_sp(71);
+          }
+        }
         &:nth-of-type(n + 2) {
-          margin-left: 56px;
           @include mq_tab{
-            margin: 30px auto 0;
+            margin: 50px auto 0;
           }
           @include mq_sp{
-            margin-top: size_sp(30);
-            margin-left : auto;
+            margin-top: size_sp(71);
+          }
+        }
+        &:nth-of-type(2n) {
+          margin-left: 70px;
+          @include mq_sp{
+            margin-left: 0;
           }
         }
       }
     }
     &-icn {
-      width: 150px;
+      width: 160px;
       margin: 0 auto;
       @include mq_sp{
         width: size_sp(240);
@@ -693,8 +707,9 @@
       line-height : (42/28);
       letter-spacing: .2em;
       text-align: center;
-      margin-top: 26px;
+      margin-top: 20px;
       @include mq_tab{
+        font-size: 26px;
         width: 200px;
         margin-right: 30px;
       }
@@ -707,7 +722,7 @@
     &-explanation {
       font-size: 16px;
       line-height: (24/16);
-      letter-spacing: .2em;
+      letter-spacing: .14em;
       margin-top: 29px;
       @include mq_tab{
         width: 300px;
