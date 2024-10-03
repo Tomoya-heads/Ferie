@@ -1,0 +1,70 @@
+/*  module > cta
+============================================================================================================ */
+
+.mod-cta{
+  background : gray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 90px 0 88px;
+  @include flex(flex, wrap, center, center, normal, column);
+  position : relative;
+  z-index: 1;
+  @include mq_sp{
+    padding: size_sp(123) 0 size_sp(121);
+  }
+  &:before {
+    content : "";
+    width: 100%;
+    height: 100%;
+    background : rgba($black00, .4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  &__inner {
+    position: relative;
+    z-index : 2;
+  }
+  &__txt {
+    font-size: 38px;
+    line-height: (56/38);
+    text-align: center;
+    letter-spacing: .2em;
+    color : $white00;
+    @include mq_sp{
+      @include fz_vw(38);
+      line-height: (68/38);
+    }
+  }
+  &__btn {
+    font-size: 16px;
+    line-height: (19/16);
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-align: center;
+    color : #394F33;
+    background : rgba($white00, .8);
+    width: 240px;
+    height: 61px;
+    margin: 48px auto 0;
+    @include flex(flex, wrap, center, center, normal, row);
+    border-radius: 50px;
+    transition: .6s;
+    @include mq_sp{
+      @include fz_vw(24);
+      line-height: (29/24);
+      width: size_sp(390);
+      height: auto;
+      padding: size_sp(16) size_sp(16);
+      margin-top: size_sp(59);
+    }
+    &:hover {
+      background : rgba($white00, 1);
+      opacity: 1;
+    }
+  }
+}
+
+

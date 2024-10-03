@@ -1,7 +1,8 @@
 .top-using {
-  padding-top: 103px;
+  padding-top: 99px;
   @include mq_sp{
-    padding-top: size_sp(80);
+    // padding-top: size_sp(80);
+    padding-top: size_sp(100);
   }
   &__list {
     padding-top: 55px;
@@ -32,7 +33,7 @@
           margin : 98px auto 0;
         }
         @include mq_sp{
-          margin : size_sp(98) auto 0;
+          margin : size_sp(76) auto 0;
         }
       }
       &.active {
@@ -54,6 +55,7 @@
       margin-right: 40px;
     }
     @include mq_sp{
+      width: size_sp(136);
       margin-right: size_sp(36);
     }
   }
@@ -97,6 +99,7 @@
       line-height: 1.23;
       letter-spacing: .2em;
       width: size_sp(264);
+      margin-top: 0;
     }
   }
 }

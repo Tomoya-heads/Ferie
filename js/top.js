@@ -17,190 +17,216 @@ $(function () {
 
 
 // 円形プログレスバー
-$(function(){
-  var bar01 = new ProgressBar.Circle(circle01, {
-    strokeWidth: 8,
-    easing: 'linear',
-    duration: 0,
-    color: '#2A8E40',
-    trailColor: '#FFF',
-    trailWidth: 8,
-    svgStyle: null
-  });
-  var bar02 = new ProgressBar.Circle(circle02, {
-    strokeWidth: 8,
-    easing: 'linear',
-    duration: 0,
-    color: '#2A8E40',
-    trailColor: '#FFF',
-    trailWidth: 7,
-    svgStyle: null
-  });
-  var bar03 = new ProgressBar.Circle(circle03, {
-    strokeWidth: 8,
-    easing: 'linear',
-    duration: 0,
-    color: '#2A8E40',
-    trailColor: '#FFF',
-    trailWidth: 7,
-    svgStyle: null
-  });
-  $(window).on('scroll', function() {
-    var windowHeight = $(window).height(); // ウィンドウの高さ
-    var documentHeight = $(document).height(); // ドキュメントの高さ
-    var scrollTop = $(window).scrollTop(); // スクロール位置
-    var scrollPercentage = (scrollTop / windowHeight) * 100; // スクロール位置の割合
-    var circlePercentage = scrollPercentage / 100; // スクロール位置の割合
-    var circlePercentage02 = (scrollPercentage / 100)- 1; // スクロール位置の割合
-    var circlePercentage03 = (scrollPercentage / 100)- 2; // スクロール位置の割合
-    var count = Math.floor(scrollPercentage); // 3つずつカウントアップ
-    if (scrollTop === 0) {
-      bar01.animate(0);
-      $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
-    }
-    if (scrollTop < 0) {
-        circlePercentage = 0;
-      $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
-    } else if (scrollTop >= windowHeight * 3) {
-      bar03.animate(1.0);
-      $('#counter').text('100' + "%"); // カウントを表示するなど、必要な処理を行う
-    } else if (scrollTop >= windowHeight * 2) {
-      $('#circle02').addClass('hidden');
-      $('#counter').text(count - 199 + "%"); // カウントを表示するなど、必要な処理を行う
-    } else if (scrollTop >= windowHeight) {
-      $('#circle01').addClass('hidden');
-      $('#circle02').removeClass('hidden');
-      $('#counter').text(count - 99 + "%"); // カウントを表示するなど、必要な処理を行う
-    } else if (scrollTop < windowHeight) {
-      $('#circle01').removeClass('hidden');
-      $('#counter').text(count + "%"); // カウントを表示するなど、必要な処理を行う
-    } else  if (scrollTop === 0) {
-        bar01.animate(0);
-      $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
-    } else {
-      $('#counter').text(count + 1 + "%"); // カウントを表示するなど、必要な処理を行う
-    }
-    // if (scrollTop >= windowHeight * 3) {
-    //   bar01.animate(1.0);
-    // } else if (scrollTop >= windowHeight * 2) {
-    //   bar01.animate(circlePercentage);
-    // } else if (scrollTop >= windowHeight) {
-    //   bar01.animate(circlePercentage);
-    // } else if (scrollTop === 0) {
-    //   bar01.animate(0);
-    // } else {
-      if (scrollTop < 0) {
-        bar01.animate(0);
-      } else {
-        bar01.animate(circlePercentage);
-      }
-        bar02.animate(circlePercentage02);
-      if (circlePercentage03 <= 1.0) {
-        bar03.animate(circlePercentage03);
-      }
-    // }
-    // 円
-    // bar.animate(circlePercentage);
-  });
-});
+// $(function(){
+//   var bar01 = new ProgressBar.Circle(circle01, {
+//     strokeWidth: 8,
+//     easing: 'linear',
+//     duration: 0,
+//     color: '#2A8E40',
+//     trailColor: '#FFF',
+//     trailWidth: 8,
+//     svgStyle: null
+//   });
+//   var bar02 = new ProgressBar.Circle(circle02, {
+//     strokeWidth: 8,
+//     easing: 'linear',
+//     duration: 0,
+//     color: '#2A8E40',
+//     trailColor: '#FFF',
+//     trailWidth: 7,
+//     svgStyle: null
+//   });
+//   var bar03 = new ProgressBar.Circle(circle03, {
+//     strokeWidth: 8,
+//     easing: 'linear',
+//     duration: 0,
+//     color: '#2A8E40',
+//     trailColor: '#FFF',
+//     trailWidth: 7,
+//     svgStyle: null
+//   });
+//   $(window).on('scroll', function() {
+//     var windowHeight = $(window).height(); // ウィンドウの高さ
+//     var documentHeight = $(document).height(); // ドキュメントの高さ
+//     var scrollTop = $(window).scrollTop(); // スクロール位置
+//     var scrollPercentage = (scrollTop / windowHeight) * 100; // スクロール位置の割合
+//     var circlePercentage = scrollPercentage / 100; // スクロール位置の割合
+//     var circlePercentage02 = (scrollPercentage / 100)- 1; // スクロール位置の割合
+//     var circlePercentage03 = (scrollPercentage / 100)- 2; // スクロール位置の割合
+//     var count = Math.floor(scrollPercentage); // 3つずつカウントアップ
+//     if (scrollTop === 0) {
+//       bar01.animate(0);
+//       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
+//     }
+//     if (scrollTop < 0) {
+//         circlePercentage = 0;
+//       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else if (scrollTop >= windowHeight * 3) {
+//       bar03.animate(1.0);
+//       $('#counter').text('100' + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else if (scrollTop >= windowHeight * 2) {
+//       $('#circle02').addClass('hidden');
+//       $('#counter').text(count - 199 + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else if (scrollTop >= windowHeight) {
+//       $('#circle01').addClass('hidden');
+//       $('#circle02').removeClass('hidden');
+//       $('#counter').text(count - 99 + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else if (scrollTop < windowHeight) {
+//       $('#circle01').removeClass('hidden');
+//       $('#counter').text(count + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else  if (scrollTop === 0) {
+//         bar01.animate(0);
+//       $('#counter').text('0' + "%"); // カウントを表示するなど、必要な処理を行う
+//     } else {
+//       $('#counter').text(count + 1 + "%"); // カウントを表示するなど、必要な処理を行う
+//     }
+//     // if (scrollTop >= windowHeight * 3) {
+//     //   bar01.animate(1.0);
+//     // } else if (scrollTop >= windowHeight * 2) {
+//     //   bar01.animate(circlePercentage);
+//     // } else if (scrollTop >= windowHeight) {
+//     //   bar01.animate(circlePercentage);
+//     // } else if (scrollTop === 0) {
+//     //   bar01.animate(0);
+//     // } else {
+//       if (scrollTop < 0) {
+//         bar01.animate(0);
+//       } else {
+//         bar01.animate(circlePercentage);
+//       }
+//         bar02.animate(circlePercentage02);
+//       if (circlePercentage03 <= 1.0) {
+//         bar03.animate(circlePercentage03);
+//       }
+//     // }
+//     // 円
+//     // bar.animate(circlePercentage);
+//   });
+// });
 
 
-// KV
+// // KV
+// $(function(){
+//   var header = $('.common-header');
+//   var $kvTarget = $('.top-kv');
+//   var kvInner = $('.top-kv__inner');
+//   var scrollCircle = $('.top-kv__scroll')
+//   var windowHeight = $(window).height();
+//   var scrollTop = $kvTarget.scrollTop();
+//   $('.top-kv').css('height', windowHeight * 4)
+//   kvInner.css('height', windowHeight);
+//   if (scrollTop >= windowHeight) {
+//     $('.top-kv__sec:first-of-type').addClass('hidden')
+//   } else  {
+//     $('.top-kv__sec:first-of-type').removeClass('hidden')
+//   }
+//   if (scrollTop >= windowHeight * 2) {
+//     $('.top-kv__sec:nth-of-type(2)').addClass('hidden')
+//   } else  {
+//     $('.top-kv__sec:nth-of-type(2)').removeClass('hidden')
+//   }
+//   if (scrollTop >= windowHeight * 3) {
+//     kvInner.css({
+//       'position': 'absolute',
+//       'top': windowHeight * 3,
+//       'bottom': 'auto',
+//     })
+//   } else  {
+//     kvInner.css({
+//       'position': 'fixed',
+//       'top': '0',
+//       'bottom': 'auto',
+//     })
+//   }
+//   if (scrollTop >= windowHeight * 3) {
+//     scrollCircle.css({
+//       'position': 'fixed',
+//       'bottom': '0',
+//     })
+//   } else  {
+//     scrollCircle.css({
+//       'position': 'absolute',
+//       'bottom': '0',
+//     })
+//   }
+//   if (scrollTop >= windowHeight * 4) {
+//     header.css('background','#13320B')
+//   } else  {
+//     header.css('background','transparent');
+//   }
+//   $(window).scroll(function() {
+//     var windowHeight = $(window).height();
+//     var scrollTop = $(window).scrollTop();
+  
+//     if (scrollTop >= windowHeight) {
+//       $('.top-kv__sec:first-of-type').addClass('hidden')
+//     } else  {
+//       $('.top-kv__sec:first-of-type').removeClass('hidden')
+//     }
+//     if (scrollTop >= windowHeight * 2) {
+//       $('.top-kv__sec:nth-of-type(2)').addClass('hidden')
+//     } else  {
+//       $('.top-kv__sec:nth-of-type(2)').removeClass('hidden')
+//     }
+//     if (scrollTop >= windowHeight * 3) {
+//       kvInner.css({
+//         'position': 'absolute',
+//         'top': windowHeight * 3,
+//         'bottom': 'auto',
+//       })
+//     } else  {
+//       kvInner.css({
+//         'position': 'fixed',
+//         'top': '0',
+//         'bottom': 'auto',
+//       })
+//     }
+//     if (scrollTop >= windowHeight * 4) {
+//       header.css('background','#13320B')
+//     } else  {
+//       header.css('background','transparent');
+//     }
+//   });
+// });
+// $(function() {
+//   var windowHeight = $(window).height();
+//   var scrollTop = $(window).scrollTop();
+//   if (scrollTop >= windowHeight * 4) {
+//     $('#circle01').addClass('hidden');
+//     $('#circle02').addClass('hidden');
+//   }
+// });
+
+//ヘッダー
 $(function(){
   var header = $('.common-header');
-  var $kvTarget = $('.top-kv');
-  var kvInner = $('.top-kv__inner');
-  var scrollCircle = $('.top-kv__scroll')
-  var windowHeight = $(window).height();
-  var scrollTop = $kvTarget.scrollTop();
-  $('.top-kv').css('height', windowHeight * 4)
-  kvInner.css('height', windowHeight);
-  if (scrollTop >= windowHeight) {
-    $('.top-kv__sec:first-of-type').addClass('hidden')
-  } else  {
-    $('.top-kv__sec:first-of-type').removeClass('hidden')
-  }
-  if (scrollTop >= windowHeight * 2) {
-    $('.top-kv__sec:nth-of-type(2)').addClass('hidden')
-  } else  {
-    $('.top-kv__sec:nth-of-type(2)').removeClass('hidden')
-  }
-  if (scrollTop >= windowHeight * 3) {
-    kvInner.css({
-      'position': 'absolute',
-      'top': windowHeight * 3,
-      'bottom': 'auto',
-    })
-  } else  {
-    kvInner.css({
-      'position': 'fixed',
-      'top': '0',
-      'bottom': 'auto',
-    })
-  }
-  if (scrollTop >= windowHeight * 3) {
-    scrollCircle.css({
-      'position': 'fixed',
-      'bottom': '0',
-    })
-  } else  {
-    scrollCircle.css({
-      'position': 'absolute',
-      'bottom': '0',
-    })
-  }
-  if (scrollTop >= windowHeight * 4) {
+  var headerHeight = $('.common-header').outerHeight();
+  var kvHeight = $('.top-kv').outerHeight();
+  var scrollTop = $(window).scrollTop();
+  if (scrollTop >= kvHeight - headerHeight) {
     header.css('background','#13320B')
   } else  {
     header.css('background','transparent');
   }
   $(window).scroll(function() {
-    var windowHeight = $(window).height();
+    var header = $('.common-header');
+    var headerHeight = $('.common-header').outerHeight();
+
+    var kvHeight = $('.top-kv').outerHeight();
     var scrollTop = $(window).scrollTop();
-  
-    if (scrollTop >= windowHeight) {
-      $('.top-kv__sec:first-of-type').addClass('hidden')
-    } else  {
-      $('.top-kv__sec:first-of-type').removeClass('hidden')
-    }
-    if (scrollTop >= windowHeight * 2) {
-      $('.top-kv__sec:nth-of-type(2)').addClass('hidden')
-    } else  {
-      $('.top-kv__sec:nth-of-type(2)').removeClass('hidden')
-    }
-    if (scrollTop >= windowHeight * 3) {
-      kvInner.css({
-        'position': 'absolute',
-        'top': windowHeight * 3,
-        'bottom': 'auto',
-      })
-    } else  {
-      kvInner.css({
-        'position': 'fixed',
-        'top': '0',
-        'bottom': 'auto',
-      })
-    }
-    if (scrollTop >= windowHeight * 4) {
+    if (scrollTop >= kvHeight - headerHeight) {
       header.css('background','#13320B')
     } else  {
       header.css('background','transparent');
     }
   });
 });
-$(function() {
-  var windowHeight = $(window).height();
-  var scrollTop = $(window).scrollTop();
-  if (scrollTop >= windowHeight * 4) {
-    $('#circle01').addClass('hidden');
-    $('#circle02').addClass('hidden');
-  }
-});
 
 // 追従タイトル
 $('.top-inn').each(function() {
   var lowSec = $(this).find(".top-inn__low")
   var lowFixed = $(this).find(".top-inn__low-fixed")
+  var lowSpacerHeight = $(this).find(".top-inn__low-spacer").outerHeight();
   $(window).scroll(function() {
     var headerHeight = $('.common-header').outerHeight();
     var scrollTop = $(window).scrollTop(); // スクロール上部の位置
@@ -279,12 +305,14 @@ $(function(){
 $('.top-inn').each(function(){
   $(this).find(".top-inn__facility-left-low").on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
     var i = (currentSlide ? currentSlide : 0) + 1;
-    $(this).parent('.top-inn__facility-left').find(".top-inn__facility-left-num").text(i + '/' + slick.slideCount);
+    if(slick.slideCount > 1) {
+      $(this).parent('.top-inn__facility-left').find(".top-inn__facility-left-num").text(i + '/' + slick.slideCount);
+    }
   });
 });
 
 
-// 設備紹介
+// 施設紹介
 
 function checkMediaQuery(){
 

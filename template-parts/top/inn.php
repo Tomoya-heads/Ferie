@@ -40,6 +40,34 @@
   $lodge_img = get_sub_field('acf_inn_main_img');
 ?>
 <section id="<?php echo $lodge_link;?>" class="<?php echo $secName;?>">
+  <!-- 特徴 -->
+  <div class="<?php echo $secName;?>__feature">
+    <?php /*
+    <div class="<?php echo $secName;?>__feature-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_img');?>"></div>
+    */?>
+    <div class="<?php echo $secName;?>__feature-intro"><span class="font-en"><?php echo $lodge_name;?></span>の特徴</div>
+    <div class="<?php echo $secName;?>__feature-concept font-ja"><?php echo $lodge_concept;?></div>
+    <?php if(have_rows('acf_inn_feature_group','option')): ?>
+    <ul class="<?php echo $secName;?>__feature-list">
+      <?php
+        while(have_rows('acf_inn_feature_group','option')): the_row();
+        if(is_page('en')) {
+          $feature_ttl = get_sub_field('acf_inn_feature_ttl_en');
+          $feature_txt = get_sub_field('acf_inn_feature_explanation_en');
+        } else {
+          $feature_ttl = get_sub_field('acf_inn_feature_ttl');
+          $feature_txt = get_sub_field('acf_inn_feature_explanation');
+        }
+      ?>
+      <li>
+        <div class="<?php echo $secName;?>__feature-icn"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_icn');?>"></div>
+        <div class="<?php echo $secName;?>__feature-ttl"><?php echo $feature_ttl;?></div>
+        <div class="<?php echo $secName;?>__feature-explanation"><?php echo $feature_txt;?></div>
+      </li>
+      <?php endwhile;?>
+    </ul>
+    <?php endif;?>
+  </div>
   <!-- 上段 -->
   <div class="<?php echo $secName;?>__high">
     <div class="mod-ttl w">宿のご紹介</div>
@@ -102,43 +130,47 @@
       <?php endwhile; endif;?>
     </div>
   </div>
-  <!-- 下段 -->
-  <div class="<?php echo $secName;?>__low">
-    <div class="<?php echo $secName;?>__low-fixed font-en"><?php echo $lodge_name;?></div>
-    <!-- 特徴 -->
-    <div class="<?php echo $secName;?>__feature">
-      <div class="<?php echo $secName;?>__feature-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_img');?>"></div>
-      <div class="<?php echo $secName;?>__feature-intro"><span class="font-en"><?php echo $lodge_name;?></span>の特徴</div>
-      <div class="<?php echo $secName;?>__feature-concept font-ja"><?php echo $lodge_concept;?></div>
-      <?php if(have_rows('acf_inn_feature_group','option')): ?>
-      <ul class="<?php echo $secName;?>__feature-list">
-        <?php
-          while(have_rows('acf_inn_feature_group','option')): the_row();
-          if(is_page('en')) {
-            $feature_ttl = get_sub_field('acf_inn_feature_ttl_en');
-            $feature_txt = get_sub_field('acf_inn_feature_explanation_en');
-          } else {
-            $feature_ttl = get_sub_field('acf_inn_feature_ttl');
-            $feature_txt = get_sub_field('acf_inn_feature_explanation');
-         }
-        ?>
-        <li>
-          <div class="<?php echo $secName;?>__feature-icn"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_icn');?>"></div>
-          <div class="<?php echo $secName;?>__feature-ttl"><?php echo $feature_ttl;?></div>
-          <div class="<?php echo $secName;?>__feature-explanation"><?php echo $feature_txt;?></div>
-        </li>
-        <?php endwhile;?>
-      </ul>
+  <!-- CTA -->
+  <?php
+    $ctaTxt = get_sub_field('cta_txt');
+    if(have_rows('cta_bg', 'option')): the_row('cta_bg', 'option');
+    $ctaBgPC = get_sub_field('cta_bg_pc');
+    $ctaBgSP = get_sub_field('cta_bg_sp');
+    endif; reset_rows();
+    $ctaLink = get_sub_field('cta_link', 'option');
+  ?>
+  <section class="mod-cta pctab-only--flex" style="background-image: url(<?php echo $ctaBgPC;?>);">
+    <div class="mod-cta__inner">
+      <?php if($ctaTxt):?>
+      <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+      <?php endif;?>
+      <?php if($ctaLink):?>
+      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo $ctaLink['title'];?></a>
       <?php endif;?>
     </div>
-    <!-- 設備紹介 -->
+  </section>
+  <section class="mod-cta sp-only--flex" style="background-image: url(<?php echo $ctaBgSP;?>);">
+    <div class="mod-cta__inner">
+      <?php if($ctaTxt):?>
+      <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+      <?php endif;?>
+      <?php if($ctaLink):?>
+      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo $ctaLink['title'];?></a>
+      <?php endif;?>
+    </div>
+  </section>
+  <!-- 下段 -->
+  <div class="<?php echo $secName;?>__low">
+    <div class="<?php echo $secName;?>__low-spacer"></div>
+    <div class="<?php echo $secName;?>__low-fixed font-en"><?php echo $lodge_name;?></div>
+    <!-- 施設紹介 -->
     <div class="<?php echo $secName;?>__facility">
       <div class="mod-ttl">
         <?php
           if(is_page('en')) {
             echo 'Equipment Introduction';
           } else {
-            echo '設備紹介';
+            echo '施設紹介';
           }
         ?>
       </div>
@@ -257,14 +289,14 @@
               </div>
               <?php endwhile; endif;?>
             </li>
-            <!-- アメニティ -->
+            <!-- アメニティ・備品 -->
             <li>
               <div class="<?php echo $secName;?>__info-facility-left">
               <?php
                 if(is_page('en')) {
                   echo 'Amenities';
                 } else {
-                  echo 'アメニティ';
+                  echo 'アメニティ<br>・<br>備品';
                 }
               ?>
               </div>

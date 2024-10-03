@@ -11,16 +11,21 @@
   }
   &__sec {
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height: 640px;
     background-size : cover;
     background-repeat: no-repeat;
     background-position : center;
-    position : absolute;
-    top : 0;
-    left : 0;
+    position: relative;
+    // position : absolute;
+    // top : 0;
+    // left : 0;
     transition: .8s;
     z-index : 1;
     opacity: 1;
+    @include mq_sp{
+      height: size_sp(750);
+    }
     &.hidden {
       opacity: 0;
       pointer-events: none;
@@ -155,11 +160,13 @@
     color : $white00;
     width: 479px;
     position : absolute;
-    top : 50%;
-    transform: translateY(-50%);
+    top: 166px;
+    // top : 50%;
+    // transform: translateY(-50%);
     @include mq_sp{
       @include fz_vw(24);
       width: size_sp(601);
+      top: size_sp(200);
     }
     &:before {
       content : "";

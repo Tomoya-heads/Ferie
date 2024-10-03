@@ -21,7 +21,7 @@
     transform: translateX(-50%);
     @include mq_sp{
       width: size_sp(70);
-      height: size_sp(1);
+      height: size_sp(2);
       bottom: size_sp(-9);
     }
   }

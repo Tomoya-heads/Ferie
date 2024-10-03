@@ -21,11 +21,14 @@ $secName = "top-access";
       } else {
         $access_address = get_sub_field('acf_inn_access_address');
         $access_time = get_sub_field('acf_inn_access_time');
-      } 
+      }
+      $access_name = get_sub_field('acf_inn_name');
+      $access_map = get_sub_field('acf_inn_access_map');
+      $access_post = get_sub_field('acf_inn_access_post_code');
     ?>
     <li>
-      <div class="<?php echo $secName;?>__ttl font-en"><?php the_sub_field('acf_inn_name');?></div>
-      <div class="<?php echo $secName;?>__map"><?php the_sub_field('acf_inn_access_map');?></div>
+      <div class="<?php echo $secName;?>__ttl font-en"><?php echo $access_name;?></div>
+      <div class="<?php echo $secName;?>__map"><?php echo $access_map;?></div>
       <div class="<?php echo $secName;?>__detail">
         <!-- 住所 -->
         <div class="<?php echo $secName;?>__detail-item">
@@ -33,7 +36,7 @@ $secName = "top-access";
             <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/top/access/icn_address.svg">
           </div>
           <div class="<?php echo $secName;?>__detail-right">
-            〒<?php the_sub_field('acf_inn_access_post_code');?><br>
+            〒<?php echo $access_post;?><br>
             <?php echo $access_address;?>
           </div>
         </div>
