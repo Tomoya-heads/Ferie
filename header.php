@@ -80,7 +80,7 @@
 							<a class="<?php //if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php //echo esc_url( home_url( '/en/' ));?>">EN</a>
 						</div> -->
 						<div class="common-header__sns">
-							<a href="https://www.instagram.com/ferie_vacation/" target="_blank">
+							<a href="https://www.instagram.com/ferielodge/" target="_blank">
 									<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
 							</a>
 							<a href="https://www.facebook.com/ferievacation" target="_blank">

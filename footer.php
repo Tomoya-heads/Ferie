@@ -28,7 +28,7 @@
       </a>
     </div>
     <div class="common-footer__sns">
-      <a href="https://www.instagram.com/ferie_vacation/" target="_blank">
+      <a href="https://www.instagram.com/ferielodge/" target="_blank">
         <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
       </a>
       <a href="https://www.facebook.com/ferievacation" target="_blank">
