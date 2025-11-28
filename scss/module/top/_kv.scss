@@ -55,6 +55,10 @@
               @include fz_vw(48);
             }
           }
+          &.font-en {
+            line-height: 1;
+            letter-spacing: 0.05em;
+          }
         }
       }
     }
@@ -152,6 +156,10 @@
         @include fz_vw(44);
       }
     }
+    &.font-en {
+            line-height: 1;
+            letter-spacing: 0.05em;
+          }
   }
   &__container {
     font-size: 14px;

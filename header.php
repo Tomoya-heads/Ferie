@@ -69,16 +69,20 @@
 									$lodge_link = get_sub_field('acf_inn_link');
 								?>
 								<li>
-									<a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#<?php echo $lodge_link;?>"><?php echo $lodge_name;?></a>
+									<?php if(is_page('en')):?>
+										<a class="font-en" href="/en/#<?php echo $lodge_link;?>"><?php echo $lodge_name;?></a>
+									<?php else:?>
+										<a class="font-en" href="<?php if(!is_front_page() ||  !is_home()) {echo esc_url( home_url( '/' ) ); }?>#<?php echo $lodge_link;?>"><?php echo $lodge_name;?></a>
+									<?php endif;?>
 								</li>
 								<?php endwhile; endif;?>
-								<li><a href="mailto:info@ferie.jp">お問い合わせ</a></li>
+								<li><a href="mailto:info@ferie.jp"><?php if(is_page(array('en','en/faq/'))){echo 'contact';}else{echo 'お問い合わせ';}?></a></li>
 							</ul>
 						</nav>
-						<!-- <div class="common-header__lang">
-							<a class="<?php //if(is_front_page() || is_page('faq') && !is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php //echo esc_url( home_url( '/' ));?>">JP</a>
-							<a class="<?php //if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php //echo esc_url( home_url( '/en/' ));?>">EN</a>
-						</div> -->
+						<div class="common-header__lang">
+							<a class="<?php if(is_front_page() || is_page('faq') && !is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/' ));?>">JP</a>
+							<a class="<?php if(is_page(array('en','en/faq/'))){echo 'now';}?>" href="<?php echo esc_url( home_url( '/en/' ));?>">EN</a>
+						</div>
 						<div class="common-header__sns">
 							<a href="https://www.instagram.com/ferielodge/" target="_blank">
 									<img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/icn_instagram.svg" alt="instagram">
@@ -94,7 +98,7 @@
 		<!-- ////ヘッダー -->
 
     <!-- コンテンツ -->
-    <main class="common-main">
+    <main class="common-main <?php if(is_page(array('en'))){echo 'en-home';}?>">
       <?php get_template_part('template-parts/common/page-title'); ?>
       <?php
 			//パンくず

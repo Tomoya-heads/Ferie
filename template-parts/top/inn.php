@@ -45,7 +45,11 @@
     <?php /*
     <div class="<?php echo $secName;?>__feature-img"><img class="object_fit" src="<?php the_sub_field('acf_inn_feature_img');?>"></div>
     */?>
-    <div class="<?php echo $secName;?>__feature-intro"><span class="font-en"><?php echo $lodge_name;?></span>の特徴</div>
+    <?php if(is_page('en')): ?>
+      <div class="<?php echo $secName;?>__feature-intro"><span class="font-en">Highlights of Ferie Lodge</span></div>
+    <?php else:?>
+      <div class="<?php echo $secName;?>__feature-intro"><span class="font-en"><?php echo $lodge_name;?></span>の特徴</div>
+    <?php endif;?>
     <div class="<?php echo $secName;?>__feature-concept font-ja"><?php echo $lodge_concept;?></div>
     <?php if(have_rows('acf_inn_feature_group','option')): ?>
     <ul class="<?php echo $secName;?>__feature-list">
@@ -70,7 +74,11 @@
   </div>
   <!-- 上段 -->
   <div class="<?php echo $secName;?>__high">
-    <div class="mod-ttl w">宿のご紹介</div>
+    <?php if(is_page('en')): ?>
+      <div class="mod-ttl w">About Ferie Lodge</div>
+    <?php else:?>
+      <div class="mod-ttl w">宿のご紹介</div>
+    <?php endif;?>
     <div class="<?php echo $secName;?>__intro">
       <!-- 1段目 -->
       <?php if(have_rows('acf_inn_introduction_01','option')): while(have_rows('acf_inn_introduction_01','option')): the_row();
@@ -142,20 +150,28 @@
   <section class="mod-cta pctab-only--flex" style="background-image: url(<?php echo $ctaBgPC;?>);">
     <div class="mod-cta__inner">
       <?php if($ctaTxt):?>
-      <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+        <?php if(is_page('en')):?>
+          <div class="mod-cta__txt font-en">Come and savor a vacation made just for you</div>
+        <?php else:?>
+          <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+        <?php endif;?>
       <?php endif;?>
       <?php if($ctaLink):?>
-      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo $ctaLink['title'];?></a>
+      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo is_page('en') ? 'Book now' : esc_html($ctaLink['title']); ?></a>
       <?php endif;?>
     </div>
   </section>
   <section class="mod-cta sp-only--flex" style="background-image: url(<?php echo $ctaBgSP;?>);">
     <div class="mod-cta__inner">
       <?php if($ctaTxt):?>
-      <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+        <?php if(is_page('en')):?>
+          <div class="mod-cta__txt font-en">Come and savor a vacation made just for you</div>
+        <?php else:?>
+          <div class="mod-cta__txt font-ja"><?php echo $ctaTxt;?></div>
+        <?php endif;?>
       <?php endif;?>
       <?php if($ctaLink):?>
-      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo $ctaLink['title'];?></a>
+      <a class="mod-cta__btn" href="<?php echo $ctaLink['url'];?>" target="<?php echo $ctaLink['target'];?>"><?php echo is_page('en') ? 'Book now' : esc_html($ctaLink['title']); ?></a>
       <?php endif;?>
     </div>
   </section>
@@ -168,7 +184,7 @@
       <div class="mod-ttl">
         <?php
           if(is_page('en')) {
-            echo 'Equipment Introduction';
+            echo 'Facility';
           } else {
             echo '施設紹介';
           }
@@ -240,8 +256,13 @@
             }
           ?>
           <div  class="<?php echo $secName;?>__facility-right-inner">
+            <?php if(is_page('en')): ?>
+              <h3 class="<?php echo $secName;?>__facility-right-ttl"><?php echo $facility_name;?></h3>
+              <p class="<?php echo $secName;?>__facility-right-txt"><?php echo $facility_txt;?></p>
+            <?php else: ?>
               <h3 class="<?php echo $secName;?>__facility-right-ttl"><?php echo $facility_name;?><br>について</h3>
               <p class="<?php echo $secName;?>__facility-right-txt"><?php echo $facility_txt;?></p>
+            <?php endif;?>
           </div>
           <?php endwhile; endif;?>
         </div>
@@ -255,9 +276,9 @@
           <div class="<?php echo $secName;?>__info-ttl font-ja">
           <?php
             if(is_page('en')) {
-              echo 'Facility Information';
+              echo 'For Your Arrival';
             } else {
-              echo '施設情報';
+              echo 'ご到着に際して';
             }
           ?>
           </div>
@@ -267,7 +288,7 @@
               <div class="<?php echo $secName;?>__info-facility-left">
               <?php
                 if(is_page('en')) {
-                  echo 'Business Hours';
+                  echo 'Hours of Operation';
                 } else {
                   echo '営業時間';
                 }
@@ -277,15 +298,15 @@
               <div class="<?php echo $secName;?>__info-facility-right">
               <?php
               if(is_page('en')) {
-                $business_hours_checkin = 'CHECK IN';
-                $business_hours_checkout = 'CHECK OUT';
+                $business_hours_checkin = 'Check-in: From';
+                $business_hours_checkout = 'Check-out: Until';
               } else {
                 $business_hours_checkin = 'チェックイン';
                 $business_hours_checkout = 'チェックアウト';
               }
               ?>
-                <?php echo $business_hours_checkin;?>　　　<?php the_sub_field('acf_inn_business_hours_checkin');?><br>
-                <?php echo $business_hours_checkout;?>　　<?php the_sub_field('acf_inn_business_hours_checkout');?>
+                <?php echo $business_hours_checkin;?>　　　<?php the_sub_field('acf_inn_business_hours_checkin');?><?php echo is_page('en') ? '' : '以降';?><br>
+                <?php echo $business_hours_checkout;?>　　<?php the_sub_field('acf_inn_business_hours_checkout');?><?php echo is_page('en') ? '' : 'まで';?>
               </div>
               <?php endwhile; endif;?>
             </li>
@@ -294,7 +315,7 @@
               <div class="<?php echo $secName;?>__info-facility-left">
               <?php
                 if(is_page('en')) {
-                  echo 'Amenities';
+                  echo 'Amenities & Facilities';
                 } else {
                   echo 'アメニティ<br>・<br>備品';
                 }
@@ -303,13 +324,20 @@
               <div class="<?php echo $secName;?>__info-facility-right"><?php echo $amenities;?></div>
             </li>
           </ul>
+          <div class="<?php echo $secName;?>__info-sub">
+            <?php if(is_page('en')):?>
+              <p>Further details will be provided via email or social media after your reservation and payment are confirmed.</p>
+            <?php else:?>
+              <p>詳細のご案内は、予約・決済後、メールやSNSでご案内いたします</p>
+            <?php endif;?>
+          </div>
         </li>
         <!-- 宿泊料金 -->
         <li>
           <div class="<?php echo $secName;?>__info-ttl font-ja">
             <?php
               if(is_page('en')) {
-                echo 'Lodge Fee';
+                echo 'Accommodation Rates';
               } else {
                 echo '宿泊料金';
               }
