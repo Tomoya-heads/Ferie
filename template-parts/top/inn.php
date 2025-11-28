@@ -328,7 +328,7 @@
             <?php if(is_page('en')):?>
               <p>Further details will be provided via email or social media after your reservation and payment are confirmed.</p>
             <?php else:?>
-              <p>詳細のご案内は、予約・決済後、メールやSNSでご案内いたします</p>
+              <p>詳細のご案内は、予約・決済後、メールやSNSで<br class="sp-only">ご案内いたします</p>
             <?php endif;?>
           </div>
         </li>

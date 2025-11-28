@@ -1183,12 +1183,12 @@
       margin-top: 20px;
       text-align: center;
       @include mq_sp {
-        margin-top: size_sp(20);
+        margin-top: size_sp(30);
       }
       p {
         font-size: 13px;
         @include mq_sp {
-          font-size: size_sp(13);
+          @include fz_vw(24);
         }
       }
     }

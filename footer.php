@@ -91,7 +91,9 @@ $uri = $_SERVER['REQUEST_URI'];
       <?php else:?>
         <p>─ Ferieは日本スカイランニング協会を応援しています ─</p>
       <?php endif;?>
-      <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/img_jsa_logo.webp">
+      <a href="https://skyrunning.jp/" target="_blank">
+        <img class="object_fit" src="<?php echo get_stylesheet_directory_uri();?>/img/common/img_jsa_logo.webp">
+      </a>
     </div>
     <small class="common-footer__copyright">&copy; 2023 Ferie</small>
   </div>
